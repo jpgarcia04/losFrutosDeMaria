@@ -1,23 +1,431 @@
-<!DOCTYPE html>
+<!-- index.html -->
+<!doctype html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Página Web</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Los Frutos de María: experiencias y productos a base de CBD para reducir el estrés y recuperar la calma." />
+  <title>Los Frutos de María — Calma, experiencia y CBD</title>
+
+  <!-- Tipografías (EB Garamond + Mulish = Muli) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&family=Mulish:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
-    <header>
-        <h1>Bienvenido a Mi Página Web</h1>
-    </header>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
 
-    <main>
-        <p>Este es el contenido principal.</p>
-        <div style="background-color: black;">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#inicio" aria-label="Los Frutos de María, inicio">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-text">
+          <span class="brand-name">Los Frutos de María</span>
+          <span class="brand-tagline">calma • experiencia • naturaleza</span>
+        </span>
+      </a>
 
+      <nav class="nav" aria-label="Navegación principal">
+        <a href="#experiencias">Experiencias</a>
+        <a href="#productos">Productos</a>
+        <a href="#beneficios">Beneficios</a>
+        <a href="#testimonios">Testimonios</a>
+        <a class="btn btn--small btn--outline" href="#contacto">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <!-- HERO -->
+    <section id="inicio" class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Rituales de bienestar con CBD</p>
+          <h1>Reduce el estrés.<br><span class="accent">Recupera tu calma</span> en cuerpo y mente.</h1>
+          <p class="lead">
+            Experiencias sensoriales y productos a base de CBD, diseñados para acompañarte
+            hacia una rutina más tranquila, consciente y ligera.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn" href="#experiencias">Explorar experiencias</a>
+            <a class="btn btn--outline" href="#productos">Ver productos</a>
+          </div>
+
+          <ul class="hero-badges" aria-label="Valores de la marca">
+            <li>Ingredientes seleccionados</li>
+            <li>Enfoque holístico</li>
+            <li>Diseño artesanal</li>
+          </ul>
         </div>
-    </main>
-    <footer>
-        <p>&copy; 2025 Mi Nombre. Todos los derechos reservados.</p>
-    </footer>
+
+        <aside class="hero-card" aria-label="Tarjeta destacada">
+          <div class="hero-card__top">
+            <p class="hero-card__title">Ritual “Calma Suave”</p>
+            <p class="hero-card__subtitle">60 min • respiración + aromaterapia + CBD</p>
+          </div>
+
+          <div class="hero-card__body">
+            <div class="stat">
+              <span class="stat__num">3</span>
+              <span class="stat__label">momentos</span>
+            </div>
+            <div class="stat">
+              <span class="stat__num">1</span>
+              <span class="stat__label">intención</span>
+            </div>
+            <div class="stat">
+              <span class="stat__num">∞</span>
+              <span class="stat__label">respira</span>
+            </div>
+
+            <div class="divider" role="presentation"></div>
+
+            <p class="small">
+              Ideal para días pesados, para soltar tensión y volver al centro.
+              <strong>No es un tratamiento médico.</strong>
+            </p>
+          </div>
+
+          <a class="btn btn--small" href="#contacto">Agendar</a>
+        </aside>
+      </div>
+
+      <div class="container trust-row" aria-label="Señales de confianza">
+        <div class="trust-item">
+          <span class="trust-icon" aria-hidden="true">✿</span>
+          <span>Experiencias guiadas</span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-icon" aria-hidden="true">❖</span>
+          <span>Productos de uso diario</span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-icon" aria-hidden="true">☾</span>
+          <span>Enfoque en descanso</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- FILOSOFÍA -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Nuestra filosofía</h2>
+          <p>Bienestar elegante, terrenal y memorable: lo simple, bien hecho.</p>
+        </div>
+
+        <div class="grid-3">
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                <path d="M12 21s7-4.5 7-11a7 7 0 0 0-14 0c0 6.5 7 11 7 11Z"></path>
+                <path d="M9.5 10.5c1 1 2.2 1.5 2.5 1.5s1.5-.5 2.5-1.5"></path>
+              </svg>
+            </div>
+            <h3>Calma sensorial</h3>
+            <p>Ritmos suaves, aromas, texturas y pausas para bajar el ruido mental.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                <path d="M12 2c4 3 6 6 6 10a6 6 0 0 1-12 0c0-4 2-7 6-10Z"></path>
+                <path d="M9 14c1.2 1 2.2 1.5 3 1.5S13.8 15 15 14"></path>
+              </svg>
+            </div>
+            <h3>Naturaleza y oficio</h3>
+            <p>Inspiración botánica y paleta terrosa: arena, verde y tonos cálidos.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                <path d="M4 12h16"></path>
+                <path d="M7 6h10"></path>
+                <path d="M7 18h10"></path>
+              </svg>
+            </div>
+            <h3>Diseño claro</h3>
+            <p>Una identidad limpia y fácil de aplicar en espacios físicos y digitales.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCIAS -->
+    <section id="experiencias" class="section section--alt">
+      <div class="container">
+        <div class="section-head">
+          <h2>Experiencias</h2>
+          <p>Rituales para regular el estrés y reconectar contigo, sin prisa.</p>
+        </div>
+
+        <div class="grid-4">
+          <article class="product-card">
+            <div class="thumb thumb--experience" aria-hidden="true"></div>
+            <div class="product-card__body">
+              <h3>Ritual de respiración</h3>
+              <p>Guía breve para soltar tensión y estabilizar el ritmo interno.</p>
+              <ul class="meta">
+                <li>30–45 min</li><li>Suave</li><li>Guiado</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="thumb thumb--experience" aria-hidden="true"></div>
+            <div class="product-card__body">
+              <h3>Aromaterapia + CBD</h3>
+              <p>Notas cálidas, masaje focal y acompañamiento para relajación.</p>
+              <ul class="meta">
+                <li>45–60 min</li><li>Medio</li><li>Sensorial</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="thumb thumb--experience" aria-hidden="true"></div>
+            <div class="product-card__body">
+              <h3>Ritual nocturno</h3>
+              <p>Secuencia para preparar el descanso: pausa, té y rutina.</p>
+              <ul class="meta">
+                <li>20–30 min</li><li>Ligero</li><li>Hogar</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="thumb thumb--experience" aria-hidden="true"></div>
+            <div class="product-card__body">
+              <h3>Sesión “Reset”</h3>
+              <p>Reinicio mental con sonido, respiración y enfoque corporal.</p>
+              <ul class="meta">
+                <li>60 min</li><li>Profundo</li><li>Premium</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+
+        <div class="cta-strip">
+          <p><strong>¿Primera vez?</strong> Te recomendamos iniciar con un ritual suave y ajustar según tu día.</p>
+          <a class="btn btn--outline" href="#contacto">Quiero una recomendación</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCTOS -->
+    <section id="productos" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Productos a base de CBD</h2>
+          <p>Diseñados para integrarse en tu rutina: mañana, tarde o noche.</p>
+        </div>
+
+        <div class="grid-3">
+          <article class="card card--product">
+            <div class="thumb thumb--product" aria-hidden="true"></div>
+            <h3>Aceite “Calma”</h3>
+            <p class="muted">Acompaña momentos de pausa y respiración consciente.</p>
+            <ul class="list">
+              <li>Sabor neutro</li>
+              <li>Uso diario</li>
+              <li>Frasco premium</li>
+            </ul>
+            <a class="link" href="#contacto">Solicitar info →</a>
+          </article>
+
+          <article class="card card--product">
+            <div class="thumb thumb--product" aria-hidden="true"></div>
+            <h3>Bálsamo “Descarga”</h3>
+            <p class="muted">Para zonas de tensión: cuello, hombros, sienes.</p>
+            <ul class="list">
+              <li>Textura suave</li>
+              <li>Aroma cálido</li>
+              <li>Rápida absorción</li>
+            </ul>
+            <a class="link" href="#contacto">Solicitar info →</a>
+          </article>
+
+          <article class="card card--product">
+            <div class="thumb thumb--product" aria-hidden="true"></div>
+            <h3>Gomitas “Noche”</h3>
+            <p class="muted">Ritual sencillo para cerrar el día con calma.</p>
+            <ul class="list">
+              <li>Formato práctico</li>
+              <li>Rutina nocturna</li>
+              <li>Pack semanal</li>
+            </ul>
+            <a class="link" href="#contacto">Solicitar info →</a>
+          </article>
+        </div>
+
+        <p class="fineprint">
+          Nota: La información presentada es orientativa y no sustituye asesoría médica.
+          Si estás embarazada/o, tomas medicación o tienes una condición médica, consulta a un profesional.
+        </p>
+      </div>
+    </section>
+
+    <!-- BENEFICIOS + CÓMO FUNCIONA -->
+    <section id="beneficios" class="section section--alt">
+      <div class="container split">
+        <div>
+          <div class="section-head section-head--left">
+            <h2>Beneficios esperados</h2>
+            <p>Un enfoque realista: apoyar hábitos, no prometer milagros.</p>
+          </div>
+
+          <ul class="checklist">
+            <li>Rutinas más constantes de pausa y respiración.</li>
+            <li>Mejor relación con el descanso (higiene del sueño).</li>
+            <li>Menos tensión acumulada en el día a día.</li>
+            <li>Espacios intencionales para reconectar contigo.</li>
+          </ul>
+
+          <div class="note">
+            <strong>Importante:</strong> no hacemos afirmaciones médicas. Nuestro enfoque es de bienestar y acompañamiento.
+          </div>
+        </div>
+
+        <div class="how">
+          <h3>Cómo funciona</h3>
+          <ol class="steps">
+            <li>
+              <span class="step-num">1</span>
+              <div>
+                <p class="step-title">Diagnóstico suave</p>
+                <p class="muted">¿Qué tipo de estrés traes hoy: mental, físico, ambos?</p>
+              </div>
+            </li>
+            <li>
+              <span class="step-num">2</span>
+              <div>
+                <p class="step-title">Ritual o producto</p>
+                <p class="muted">Elegimos una experiencia o una rutina simple de uso diario.</p>
+              </div>
+            </li>
+            <li>
+              <span class="step-num">3</span>
+              <div>
+                <p class="step-title">Seguimiento</p>
+                <p class="muted">Ajustes pequeños para mantenerlo sostenible en el tiempo.</p>
+              </div>
+            </li>
+          </ol>
+
+          <div class="mini-cta">
+            <p><strong>¿Quieres empezar hoy?</strong> Escríbenos y te guiamos.</p>
+            <a class="btn btn--small" href="#contacto">Hablar con el equipo</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIOS -->
+    <section id="testimonios" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Lo que se siente</h2>
+          <p>Personas reales, hábitos reales. (Ejemplos de texto editables.)</p>
+        </div>
+
+        <div class="grid-3">
+          <figure class="quote">
+            <blockquote>“No me cambió la vida en un día, pero sí me ayudó a tener una rutina que me baja el ruido.”</blockquote>
+            <figcaption>— Andrea, 28</figcaption>
+          </figure>
+
+          <figure class="quote">
+            <blockquote>“La experiencia es súper tranquila. Sales con el cuerpo liviano y la mente más ordenada.”</blockquote>
+            <figcaption>— Luis, 34</figcaption>
+          </figure>
+
+          <figure class="quote">
+            <blockquote>“El ritual nocturno se volvió mi ‘cierre’ del día. Me ayuda a desconectarme.”</blockquote>
+            <figcaption>— Sofía, 26</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="section section--alt">
+      <div class="container contact">
+        <div>
+          <h2>Contacto</h2>
+          <p class="lead">
+            Cuéntanos qué buscas: experiencia, producto o una recomendación. Te respondemos rápido.
+          </p>
+
+          <div class="contact-cards">
+            <div class="mini-card">
+              <p class="mini-title">Horario</p>
+              <p class="muted">Lun–Sáb • 10:00–19:00</p>
+            </div>
+            <div class="mini-card">
+              <p class="mini-title">Ubicación</p>
+              <p class="muted">Tu ciudad • (edita aquí)</p>
+            </div>
+            <div class="mini-card">
+              <p class="mini-title">Redes</p>
+              <p class="muted">@losfrutosdemaria</p>
+            </div>
+          </div>
+        </div>
+
+        <form class="form" action="#" method="post" aria-label="Formulario de contacto">
+          <label>
+            Nombre
+            <input type="text" name="nombre" placeholder="Tu nombre" required>
+          </label>
+
+          <label>
+            Correo
+            <input type="email" name="email" placeholder="tucorreo@ejemplo.com" required>
+          </label>
+
+          <label>
+            ¿Qué te interesa?
+            <select name="interes" required>
+              <option value="" selected disabled>Selecciona una opción</option>
+              <option>Experiencias</option>
+              <option>Productos</option>
+              <option>Recomendación</option>
+              <option>Otro</option>
+            </select>
+          </label>
+
+          <label>
+            Mensaje
+            <textarea name="mensaje" rows="5" placeholder="Cuéntanos un poco de lo que necesitas…" required></textarea>
+          </label>
+
+          <button class="btn" type="submit">Enviar</button>
+          <p class="fineprint">Al enviar aceptas que te contactemos por correo. No compartimos tus datos.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Los Frutos de María. Todos los derechos reservados.</p>
+      <div class="footer-links">
+        <a href="#inicio">Inicio</a>
+        <a href="#experiencias">Experiencias</a>
+        <a href="#productos">Productos</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // detalle mínimo: año automático
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>

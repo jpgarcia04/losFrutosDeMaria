@@ -22,7 +22,7 @@
 
   /* Dimensiones y Tipografías */
   --container-width: 1120px;
-  --header-height: 90px; /* Altura reservada para scroll */
+  --header-height: 90px;
   --radius: 18px;
   --radius-lg: 26px;
 
@@ -70,7 +70,7 @@ p { margin-top: 0; }
 .skip-link:focus { left: 20px; }
 
 /* =========================================
-   3. HEADER & LOGO (Renovado)
+   3. HEADER & NAVEGACIÓN
    ========================================= */
 .site-header {
   position: sticky;
@@ -87,46 +87,38 @@ p { margin-top: 0; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: var(--header-height); /* Más alto para dar presencia */
+  height: var(--header-height);
   padding: 0; 
 }
 
-/* -- Estilización del Logo -- */
+/* Marca / Logo */
 .brand {
   display: flex;
   align-items: center;
-  gap: 16px; /* Más espacio entre icono y texto */
-  group: brand;
+  gap: 16px;
 }
 
 .brand-mark {
-  /* Hacemos el icono más grande */
   width: 56px; 
   height: 56px;
   border-radius: 16px;
   flex-shrink: 0;
   overflow: hidden;
   position: relative;
-  
-  /* Fallback visual elegante si no carga la imagen */
-  background: 
-    radial-gradient(circle at 30% 30%, rgba(255,255,255,0.4), transparent 60%),
-    linear-gradient(135deg, var(--olive), var(--rust));
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.4), transparent 60%),
+              linear-gradient(135deg, var(--olive), var(--rust));
   border: 1px solid rgba(255,255,255,0.4);
   box-shadow: 0 8px 16px rgba(31, 28, 23, 0.1);
   transition: transform 0.3s ease;
 }
 
-/* Animación sutil al pasar el mouse sobre el logo */
-.brand:hover .brand-mark {
-  transform: rotate(-3deg) scale(1.02);
-}
+.brand:hover .brand-mark { transform: rotate(-3deg) scale(1.02); }
 
 .brand-mark img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.9; /* Mezcla la imagen con el fondo para estilo vintage */
+  opacity: 0.9;
 }
 
 .brand-text {
@@ -138,7 +130,7 @@ p { margin-top: 0; }
 .brand-name {
   font-family: var(--serif);
   font-weight: 500;
-  font-size: 22px; /* Aumentado */
+  font-size: 22px;
   letter-spacing: -0.01em;
   color: var(--ink);
   line-height: 1;
@@ -149,17 +141,13 @@ p { margin-top: 0; }
   font-family: var(--sans);
   font-size: 10px;
   font-weight: 700;
-  text-transform: uppercase; /* Mayúsculas para elegancia */
-  letter-spacing: 2px; /* Espaciado premium */
+  text-transform: uppercase;
+  letter-spacing: 2px;
   color: var(--rust);
 }
 
-/* -- Navegación -- */
-.nav {
-  display: flex;
-  align-items: center;
-  gap: 32px; /* Más aire entre enlaces */
-}
+/* Menú */
+.nav { display: flex; align-items: center; gap: 32px; }
 
 .nav a:not(.btn) {
   font-size: 15px;
@@ -168,7 +156,6 @@ p { margin-top: 0; }
   position: relative;
 }
 
-/* Efecto hover subrayado animado */
 .nav a:not(.btn)::after {
   content: '';
   position: absolute;
@@ -180,14 +167,13 @@ p { margin-top: 0; }
 .nav a:not(.btn):hover::after { width: 100%; }
 
 /* =========================================
-   4. COMPONENTES (Botones y Tarjetas)
+   4. COMPONENTES GLOBALES (Botones y Cards)
    ========================================= */
-/* Botones */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 12px 24px; /* Botones más cómodos */
+  padding: 12px 24px;
   border-radius: 100px;
   background: var(--terracotta);
   color: #fff;
@@ -197,6 +183,7 @@ p { margin-top: 0; }
   border: 1px solid transparent;
   box-shadow: 0 10px 20px rgba(244, 114, 60, 0.25);
   transition: var(--ease);
+  cursor: pointer;
 }
 
 .btn:hover {
@@ -219,7 +206,14 @@ p { margin-top: 0; }
 }
 .btn--small { padding: 8px 18px; font-size: 13px; }
 
-/* Tarjetas Generales */
+/* Grid Genérico */
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* Card Genérica (Usada en filosofía) */
 .card {
   background: var(--card-bg);
   border: 1px solid var(--stroke);
@@ -243,43 +237,31 @@ p { margin-top: 0; }
 }
 .card-icon svg { width: 26px; height: 26px; }
 
+/* Títulos y textos generales de card */
 .card h3 { font-size: 22px; margin-bottom: 10px; }
 .card p { font-size: 15px; color: var(--muted); line-height: 1.5; }
 
-/* =========================================
-   5. SECCIONES (Hero, Grids, Productos)
-   ========================================= */
+/* Estructura de Secciones */
 .section { padding: 80px 0; }
 .section--alt {
   background: rgba(255, 255, 255, 0.25);
   border-top: 1px solid var(--stroke);
   border-bottom: 1px solid var(--stroke);
 }
-
 .section-head { margin-bottom: 40px; }
 .section-head h2 { font-size: 42px; margin-bottom: 12px; }
 .section-head p { font-size: 18px; max-width: 60ch; color: var(--muted); }
 
-/* Grid Systems */
-.grid-3 {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-.grid-4 {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-}
-
-/* Hero Section */
+/* =========================================
+   5. HERO (Inicio)
+   ========================================= */
 .hero {
   padding: 80px 0 60px;
   position: relative;
   overflow: hidden;
   border-bottom: 1px solid var(--stroke);
 }
-/* Fondo decorativo sutil */
+
 .hero::before {
   content: "";
   position: absolute;
@@ -310,9 +292,7 @@ p { margin-top: 0; }
   margin-bottom: 30px;
 }
 
-.hero-badges {
-  display: flex; gap: 12px; flex-wrap: wrap;
-}
+.hero-badges { display: flex; gap: 12px; flex-wrap: wrap; }
 .hero-badges li {
   font-size: 13px;
   padding: 8px 14px;
@@ -321,91 +301,270 @@ p { margin-top: 0; }
   border-radius: 100px;
 }
 
-/* Trust Indicators */
-.trust-row {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin-top: 40px;
-}
-.trust-item {
-  display: flex; align-items: center; gap: 12px;
-  padding: 16px;
-  background: rgba(255,255,255,0.3);
-  border: 1px solid var(--stroke);
-  border-radius: 12px;
-  font-size: 14px; font-weight: 600;
-}
-.trust-icon { font-size: 18px; color: var(--olive); }
-
-/* Tarjetas de Producto & Experiencia */
-.product-card {
-  background: #fff;
-  border: 1px solid var(--stroke);
-  border-radius: var(--radius);
-  overflow: hidden;
-  transition: var(--ease);
-}
-.product-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-soft);
+/* =========================================
+  ENLACES HERO (Minimalista)
+   ========================================= */
+.hero-actions {
+  margin-top: 50px; /* Un poco más de aire arriba */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Alineado a la izquierda como el texto */
+  gap: 20px; /* Espacio entre los elementos */
 }
 
-.thumb { height: 180px; width: 100%; position: relative; }
-/* Generadores de gradientes para simular fotos */
-.thumb--experience {
-  background: linear-gradient(120deg, #FDEDCE 0%, #F3C498 100%);
-}
-.thumb--product {
-  background: linear-gradient(to top, #e6b980 0%, #eacda3 100%);
-}
-
-.product-card__body { padding: 20px; }
-.product-card__body h3 { font-size: 20px; margin-bottom: 8px; }
-.meta { gap: 6px; }
-.meta li { font-size: 11px; padding: 4px 8px; background: var(--sand); }
-
-.cta-strip {
-  margin-top: 30px;
-  background: #F3C49833;
-  padding: 20px; border-radius: 12px;
-  display: flex; justify-content: space-between; align-items: center;
+.action-link {
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--ink); /* Color de tu marca, no el de ellos */
+  text-transform: uppercase; /* Les da presencia de "marca" sin ser logo */
+  letter-spacing: 1.5px;
+  position: relative;
+  transition: color 0.2s ease;
 }
 
-/* Productos (Layout Específico) */
-.card--product { padding: 0; overflow: hidden; background: #fff; }
-.card--product h3 { padding: 0 20px; margin-top: 16px; font-size: 20px;}
-.card--product .muted { padding: 0 20px; margin-bottom: 12px; font-size: 14px; }
-.card--product .list { padding: 0 20px 0 36px; margin-bottom: 20px; font-size: 14px; }
-.card--product .link { 
-  display: block; 
-  padding: 16px 20px; 
-  background: var(--sand); 
-  text-align: center;
-  font-weight: 700; color: var(--rust);
-  font-size: 14px;
+/* Efecto hover sutil */
+.action-link:hover {
+  color: var(--terracotta);
+  text-decoration: none;
 }
-.card--product .link:hover { background: #ffe4bc; text-decoration: none; }
 
-.fineprint { font-size: 12px; color: var(--muted); margin-top: 24px; opacity: 0.8; }
+/* La línea separadora */
+.separator {
+  color: var(--stroke); /* Color muy sutil para la línea */
+  font-size: 18px;
+  font-weight: 300;
+  user-select: none; /* Evita que se seleccione la barra al copiar texto */
+}
+
+/* Responsive para móviles pequeños */
+@media (max-width: 600px) {
+  .hero-actions {
+    gap: 12px; /* Menos espacio en móvil */
+    justify-content: center; /* Centrados en móvil si prefieres */
+    flex-wrap: wrap; /* Permite que bajen si no caben, aunque deberían caber */
+  }
+  
+  .action-link {
+    font-size: 13px; /* Un poco más pequeños */
+    letter-spacing: 1px;
+  }
+}
 
 /* =========================================
-   6. CONTACTO & FOOTER
+   6. EXPERIENCIAS
+   ========================================= */
+.experiences-list {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.experience-card {
+  display: grid;
+  grid-template-columns: 45% 1fr;
+  background: #fff;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--stroke);
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.experience-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(31, 28, 23, 0.12);
+}
+
+.experience-card__image-wrapper {
+  position: relative;
+  height: 100%;
+  min-height: 280px;
+  overflow: hidden;
+}
+
+.experience-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.experience-card:hover .experience-card__image { transform: scale(1.05); }
+
+.badge-floating {
+  position: absolute;
+  top: 16px; left: 16px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 6px 12px;
+  border-radius: 100px;
+  font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1px;
+  color: var(--olive);
+  backdrop-filter: blur(4px);
+}
+
+.experience-card__content {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.experience-card .eyebrow {
+  display: block;
+  font-size: 12px; font-weight: 700;
+  color: var(--rust);
+  text-transform: uppercase; letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.experience-card h3 { font-size: 26px; color: var(--ink); margin: 0 0 14px 0; }
+.experience-card p { color: var(--muted); font-size: 16px; margin-bottom: 24px; }
+
+/* Lista de amenidades en experiencia */
+.amenities-list {
+  display: flex; gap: 16px;
+  margin-bottom: 24px;
+}
+.amenities-list li {
+  font-size: 14px; font-weight: 600;
+  color: var(--ink);
+  display: flex; align-items: center; gap: 6px;
+}
+
+.experience-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  border-top: 1px solid rgba(0,0,0,0.06);
+  padding-top: 20px; margin-top: auto;
+}
+
+/* =========================================
+   7. PRODUCTOS (Botica Natural)
+   ========================================= */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+/* Card Específica de Producto */
+.card--product {
+  padding: 0; /* Override del padding general para que la imagen toque bordes */
+  background: #fff;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.card__image-box {
+  position: relative;
+  height: 250px;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--sand);
+}
+
+.card__image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.card--product:hover .card__image-box img {
+  transform: scale(1.04);
+}
+
+/* Etiqueta 'Best Seller' */
+.tag-new {
+  position: absolute;
+  top: 12px; right: 12px;
+  background: var(--rust);
+  color: #fff;
+  font-size: 11px; font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 100px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.card__content {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card__content h3 {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.card__content .description {
+  font-size: 14px;
+  margin-bottom: 16px;
+  flex-grow: 1; /* Empuja el botón al final si hay diferencia de altura */
+}
+
+/* Lista de características del producto */
+.feature-list {
+  margin-bottom: 20px;
+  border-top: 1px solid var(--stroke);
+  padding-top: 16px;
+}
+
+.feature-list li {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 6px;
+  display: flex; align-items: center; gap: 8px;
+}
+
+/* Enlace tipo botón al final de la card */
+.btn-link {
+  display: block;
+  text-align: center;
+  width: 100%;
+  padding: 12px;
+  background: rgba(253, 237, 206, 0.5); /* Sand muy suave */
+  color: var(--rust);
+  font-weight: 700;
+  font-size: 14px;
+  border-radius: 8px;
+  transition: var(--ease);
+}
+
+.btn-link:hover {
+  background: var(--sand);
+  color: var(--terracotta);
+}
+
+/* =========================================
+   8. CONTACTO & FOOTER
    ========================================= */
 .contact {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 60px;
 }
-.contact-cards { grid-template-columns: repeat(3, 1fr); gap: 12px; display: grid; margin-top: 24px;}
+.contact-cards { 
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 12px; margin-top: 24px;
+}
 .mini-card {
   background: rgba(255,255,255,0.4);
   padding: 16px; border-radius: 12px; border: 1px solid var(--stroke);
 }
 .mini-title { font-weight: 700; font-size: 13px; margin-bottom: 4px; }
-.mini-card .muted { font-size: 13px; }
+.mini-card .muted { font-size: 13px; margin: 0; }
 
-/* Formulario limpio */
+/* Formulario */
 .form {
   background: #fff;
   padding: 30px;
@@ -416,8 +575,7 @@ p { margin-top: 0; }
 .form label { display: block; font-weight: 700; font-size: 13px; margin-bottom: 16px; }
 .form input, .form select, .form textarea {
   width: 100%;
-  padding: 14px;
-  margin-top: 6px;
+  padding: 14px; margin-top: 6px;
   border-radius: 10px;
   border: 1px solid rgba(0,0,0,0.1);
   background: #FAFAFA;
@@ -429,7 +587,8 @@ p { margin-top: 0; }
   background: #fff;
   box-shadow: 0 0 0 3px rgba(244, 114, 60, 0.1);
 }
-.form button { width: 100%; margin-top: 10px; cursor: pointer; }
+.form button { width: 100%; margin-top: 10px; }
+.fineprint { font-size: 12px; color: var(--muted); margin-top: 24px; opacity: 0.8; }
 
 /* Footer */
 .site-footer {
@@ -444,20 +603,30 @@ p { margin-top: 0; }
 .footer-links a:hover { color: var(--rust); }
 
 /* =========================================
-   7. RESPONSIVE
+   9. RESPONSIVE
    ========================================= */
 @media (max-width: 900px) {
   :root { --header-height: 70px; }
-  .grid-3, .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: repeat(2, 1fr); }
   .hero-grid, .contact { grid-template-columns: 1fr; gap: 30px; }
-  .trust-row { display: none; } /* Ocultar en móvil para limpiar */
+  .trust-row { display: none; }
   .brand-mark { width: 42px; height: 42px; }
   .brand-name { font-size: 18px; }
-  .nav { display: none; } /* Aquí deberías agregar un menú hamburguesa */
+  .nav { display: none; } /* Nota: Aquí requerirías JS/CSS extra para menú móvil */
+}
+
+@media (max-width: 768px) {
+  .experience-card {
+    grid-template-columns: 1fr;
+    max-width: 500px; margin: 0 auto;
+  }
+  .experience-card__image-wrapper { height: 220px; min-height: auto; }
+  .experience-card__content { padding: 24px; }
+  .experience-card__footer { justify-content: flex-start; }
 }
 
 @media (max-width: 600px) {
-  .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  .grid-3 { grid-template-columns: 1fr; }
   .hero h1 { font-size: 36px; }
   .contact-cards { grid-template-columns: 1fr; }
 }

@@ -1,16 +1,20 @@
 <!-- index.html -->
 <!doctype html>
 <html lang="es">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Los Frutos de María: experiencias y productos a base de CBD para reducir el estrés y recuperar la calma." />
+  <meta name="description"
+    content="Los Frutos de María: experiencias y productos a base de CBD para reducir el estrés y recuperar la calma." />
   <title>Los Frutos de María</title>
 
   <!-- Tipografías (EB Garamond + Mulish = Muli) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&family=Mulish:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&family=Mulish:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
 
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -41,84 +45,83 @@
   <main id="contenido">
     <!-- HERO -->
     <section id="inicio" class="hero">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <h1>Reduce el estrés.<br><span class="accent">Recupera tu calma</span> en cuerpo y mente.</h1>
-          <p class="lead">
-            Experiencias sensoriales y productos a base de CBD, diseñados para acompañarte
-            hacia una rutina más tranquila, consciente y ligera.
-          </p>
+      <video class="hero-video" src="images/lfdm-ld.mp4" autoplay muted loop playsinline></video>
+      <div class="hero-overlay"></div>
+      <div class="container hero-content">
+        <h1>Reduce el estrés.<br><span class="accent">Recupera tu calma</span> en cuerpo y mente.</h1>
 
-          <ul class="hero-badges" aria-label="Valores de la marca">
-            <li>Stress free</li>
-            <li>Salud</li>
-            <li>Alimentación</li>
-            <li>Lifestyle</li>
-            <li>Descanso</li>
-          </ul>
+        <div class="hero-actions">
+          <a href="https://www.amazon.com.mx/stores/page/E1B77F72-D5B0-47A2-BEB8-696403B0CFA9?ingress=2&lp_context_asin=B0DHFH4RKR&lp_context_query=los%20frutos%20de%20maria&visitId=accea786-ec7a-4c21-9a8b-a5302ca8bfb2&ref_=ast_bln"
+            target="_blank" rel="noopener" class="action-link">
+            Amazon
+          </a>
+          <span class="separator" aria-hidden="true">|</span>
+          <a href="https://www.liverpool.com.mx/tienda?s=los+frutos+de+mar%C3%ADa" target="_blank" rel="noopener"
+            class="action-link">
+            Liverpool
+          </a>
+          <span class="separator" aria-hidden="true">|</span>
+          <a href="https://www.instagram.com/losfrutosdemaria_" target="_blank" rel="noopener" class="action-link">
+            Instagram
+          </a>
         </div>
       </div>
+    </section>
 
-      <div class="container hero-actions">
-        <a href="https://www.amazon.com.mx/stores/page/E1B77F72-D5B0-47A2-BEB8-696403B0CFA9?ingress=2&lp_context_asin=B0DHFH4RKR&lp_context_query=los%20frutos%20de%20maria&visitId=accea786-ec7a-4c21-9a8b-a5302ca8bfb2&ref_=ast_bln" target="_blank" rel="noopener" class="action-link">
-          Amazon
-        </a>
-
-        <span class="separator" aria-hidden="true">|</span>
-
-        <a href="https://www.liverpool.com.mx/tienda?s=los+frutos+de+mar%C3%ADa" target="_blank" rel="noopener" class="action-link">
-          Liverpool
-        </a>
-
-        <span class="separator" aria-hidden="true">|</span>
-
-        <a href="https://www.instagram.com/losfrutosdemaria_" target="_blank" rel="noopener" class="action-link">
-          Instagram
-        </a>
-      </div>
-
-    <!-- FILOSOFÍA -->
-    <section class="section">
+    <!-- PRODUCTOS -->
+    <section id="productos" class="section">
       <div class="container">
         <div class="section-head">
-          <h2>Nuestra filosofía</h2>
-          <p>Bienestar elegante, terrenal y memorable: lo simple, bien hecho.</p>
+          <h2>Productos</h2>
+          <p>Productos con CBD diseñadas para nutrir y calmar tu mente y cuerpo.</p>
         </div>
 
-        <div class="grid-3">
-          <article class="card">
-            <div class="card-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
-                <path d="M12 21s7-4.5 7-11a7 7 0 0 0-14 0c0 6.5 7 11 7 11Z"></path>
-                <path d="M9.5 10.5c1 1 2.2 1.5 2.5 1.5s1.5-.5 2.5-1.5"></path>
-              </svg>
-            </div>
-            <h3>Calma sensorial</h3>
-            <p>Ritmos suaves, aromas, texturas y pausas para bajar el ruido mental.</p>
-          </article>
+        <div class="carousel-container">
+          <input checked type="radio" name="slider" id="slide1" />
+          <input type="radio" name="slider" id="slide2" />
+          <input type="radio" name="slider" id="slide3" />
 
-          <article class="card">
-            <div class="card-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
-                <path d="M12 2c4 3 6 6 6 10a6 6 0 0 1-12 0c0-4 2-7 6-10Z"></path>
-                <path d="M9 14c1.2 1 2.2 1.5 3 1.5S13.8 15 15 14"></path>
-              </svg>
-            </div>
-            <h3>Naturaleza y oficio</h3>
-            <p>Inspiración botánica y paleta terrosa: arena, verde y tonos cálidos.</p>
-          </article>
+          <div class="carousel-wrapper">
+            <div class="carousel-inner">
 
-          <article class="card">
-            <div class="card-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
-                <path d="M4 12h16"></path>
-                <path d="M7 6h10"></path>
-                <path d="M7 18h10"></path>
-              </svg>
+              <article>
+                <div class="carousel-info">
+                  <h3>Skin Care</h3>
+                  <h4>Elixir ligero de hidratación profunda y CBD</h4>
+                </div>
+                <img src="images/skincare.png" alt="Skin Care" />
+              </article>
+
+              <article>
+                <div class="carousel-info">
+                  <h3>Zona Zen</h3>
+                  <h4>Vela aromática y aceite para masajes 2 en 1</h4>
+                </div>
+                <img src="images/velas.jpg" alt="Zona Zen" />
+              </article>
+
+              <article>
+                <div class="carousel-info">
+                  <h3>Bienestar Natural</h3>
+                  <h4>Descubre los beneficios del CBD</h4>
+                </div>
+                <img src="images/TiposCann.png" alt="Bienestar Natural" />
+              </article>
+
             </div>
-            <h3>Diseño claro</h3>
-            <p>Una identidad limpia y fácil de aplicar en espacios físicos y digitales.</p>
-          </article>
+          </div>
+
+          <div class="slider-prev-next-control">
+            <label for="slide1"></label>
+            <label for="slide2"></label>
+            <label for="slide3"></label>
+          </div>
+
+          <div class="slider-dot-control">
+            <label for="slide1"></label>
+            <label for="slide2"></label>
+            <label for="slide3"></label>
+          </div>
         </div>
       </div>
     </section>
@@ -132,21 +135,23 @@
         </div>
 
         <div class="experiences-list">
-          
+
           <article class="experience-card">
             <div class="experience-card__image-wrapper">
-              <img src="images/cabania.jpg" alt="Interior rústico de la cabaña en Zipolite con vista al mar" class="experience-card__image">
+              <img src="images/cabania.jpg" alt="Interior rústico de la cabaña en Zipolite con vista al mar"
+                class="experience-card__image">
               <span class="badge-floating">Zipolite, Oaxaca</span>
             </div>
-            
+
             <div class="experience-card__content">
               <div class="experience-card__header">
                 <span class="eyebrow">Hospedaje • Eco-Luxury</span>
                 <h3>La Cabaña: Refugio frente al mar</h3>
               </div>
-              
+
               <p>
-                Despierta con el sonido de la costa Oaxaqueña. Nuestra cabaña está construida en un espacio privado, alejado del ruido, ideal para parejas o retiros personales.
+                Despierta con el sonido de la costa Oaxaqueña. Nuestra cabaña está construida en un espacio privado,
+                alejado del ruido, ideal para parejas o retiros personales.
               </p>
 
               <ul class="amenities-list">
@@ -157,63 +162,10 @@
                   <span class="icon">🌊</span> Vista al mar
                 </li>
               </ul>
-              
+
               <div class="experience-card__footer">
                 <a href="#contacto" class="btn btn--small">Ver disponibilidad →</a>
               </div>
-            </div>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- PRODUCTOS -->
-    <section id="productos" class="section">
-      <div class="container">
-        <div class="section-head">
-          <h2>Productos</h2>
-          <p>Productos con CBD diseñadas para nutrir y calmar tu mente y cuerpo.</p>
-        </div>
-
-        <div class="product-grid">
-          
-          <article class="card card--product">
-            <div class="card__image-box">
-              <img src="images/skincare.png" alt="Frasco de suero facial con gotero sobre piedra natural">
-              <span class="tag-new">Best Sellers</span>
-            </div>
-            
-            <div class="card__content">
-              <h3>Skin Care</h3>
-              <p class="description">Un elixir ligero que hidrata profundamente, reduce la inflamación y devuelve el brillo natural a tu rostro sin dejar sensación grasa.</p>
-              
-              <ul class="feature-list">
-                <li>✨ Uso diario (Día/Noche)</li>
-                <li>🌿 CBD de espectro completo</li>
-                <li>💧 Ácido Hialurónico Vegano</li>
-              </ul>
-              
-              <a class="btn-link" href="#contacto">Ver más →</a>
-            </div>
-          </article>
-
-          <article class="card card--product">
-            <div class="card__image-box">
-              <img src="images/velas.jpg" alt="Vela encendida con textura suave">
-            </div>
-            
-            <div class="card__content">
-              <h3>Zona Zen</h3>
-              <p class="description">No es solo una vela. Su cera de soya de baja fusión se convierte en un aceite tibio rico en CBD, ideal para masajear cuello y hombros.</p>
-              
-              <ul class="feature-list">
-                <li>🔥 2 en 1: Aroma + Masaje</li>
-                <li>🪵 Mecha de madera crepitante</li>
-                <li>🌸 Lavanda y Sándalo</li>
-              </ul>
-              
-              <a class="btn-link" href="#contacto">Ver más →</a>
             </div>
           </article>
 
@@ -292,5 +244,7 @@
     // detalle mínimo: año automático
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
+  <script src="js/carousel.js" defer></script>
 </body>
+
 </html>

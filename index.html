@@ -44,26 +44,18 @@
 
   <main id="contenido">
     <!-- HERO -->
-    <section id="inicio" class="hero">
-      <video class="hero-video" src="images/lfdm-ld.mp4" autoplay muted loop playsinline></video>
-      <div class="hero-overlay"></div>
-      <div class="container hero-content">
-        <h1>Reduce el estrés.<br><span class="accent">Recupera tu calma</span> en cuerpo y mente.</h1>
-
-        <div class="hero-actions">
-          <a href="https://www.amazon.com.mx/stores/page/E1B77F72-D5B0-47A2-BEB8-696403B0CFA9?ingress=2&lp_context_asin=B0DHFH4RKR&lp_context_query=los%20frutos%20de%20maria&visitId=accea786-ec7a-4c21-9a8b-a5302ca8bfb2&ref_=ast_bln"
-            target="_blank" rel="noopener" class="action-link">
-            Amazon
-          </a>
-          <span class="separator" aria-hidden="true">|</span>
-          <a href="https://www.liverpool.com.mx/tienda?s=los+frutos+de+mar%C3%ADa" target="_blank" rel="noopener"
-            class="action-link">
-            Liverpool
-          </a>
-          <span class="separator" aria-hidden="true">|</span>
-          <a href="https://www.instagram.com/losfrutosdemaria_" target="_blank" rel="noopener" class="action-link">
-            Instagram
-          </a>
+    <section id="inicio" class="hero section">
+      <div class="container hero-inner animate-on-scroll">
+        <div class="hero-content">
+          <h1>Reduce el estrés.<br><span class="accent">Recupera tu calma</span> en cuerpo y mente.</h1>
+          <div class="hero-actions">
+            <a href="#contacto" class="btn">Conoce nuestros puntos de venta</a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="video-wrapper">
+            <video class="hero-video" src="images/lfdm-ld.mp4" autoplay muted loop playsinline></video>
+          </div>
         </div>
       </div>
     </section>
@@ -71,12 +63,12 @@
     <!-- PRODUCTOS -->
     <section id="productos" class="section">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head animate-on-scroll">
           <h2>Productos</h2>
           <p>Productos con CBD diseñadas para nutrir y calmar tu mente y cuerpo.</p>
         </div>
 
-        <div class="carousel-container">
+        <div class="carousel-container animate-on-scroll" style="transition-delay: 0.1s;">
           <input checked type="radio" name="slider" id="slide1" />
           <input type="radio" name="slider" id="slide2" />
           <input type="radio" name="slider" id="slide3" />
@@ -129,16 +121,16 @@
     <!-- EXPERIENCIAS -->
     <section id="experiencias" class="section section--alt">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head animate-on-scroll">
           <h2>Experiencias y Retiros</h2>
           <p>Espacios físicos diseñados para pausar el mundo y reconectar con la naturaleza.</p>
         </div>
 
         <div class="experiences-list">
 
-          <article class="experience-card">
+          <article class="experience-card animate-on-scroll" style="transition-delay: 0.1s;">
             <div class="experience-card__image-wrapper">
-              <img src="images/cabania.jpg" alt="Interior rústico de la cabaña en Zipolite con vista al mar"
+              <img src="images/cabania/cabania.jpg" alt="Interior rústico de la cabaña en Zipolite con vista al mar"
                 class="experience-card__image">
               <span class="badge-floating">Zipolite, Oaxaca</span>
             </div>
@@ -175,55 +167,53 @@
 
     <!-- CONTACTO -->
     <section id="contacto" class="section section--alt">
-      <div class="container contact">
-        <div>
-          <h2>Contacto</h2>
-          <p class="lead">
-            Cuéntanos qué buscas: experiencia, producto o una recomendación. Te respondemos rápido.
-          </p>
+      <div class="container">
+        <div class="section-head animate-on-scroll" style="text-align: center;">
+          <h2>Encuéntranos</h2>
+          <p style="margin: 0 auto;">Adquiere nuestros productos o ponte en contacto a través de nuestras redes sociales.</p>
+        </div>
 
-          <div class="contact-cards">
-            <div class="mini-card">
-              <p class="mini-title">Ubicación</p>
-              <p class="muted">Ciudad de México</p>
+        <div class="contact-grid">
+          <!-- Puntos de Venta -->
+          <div class="contact-box animate-on-scroll">
+            <div class="contact-box-header">
+              <span class="icon">📍</span>
+              <h3>Puntos de Venta</h3>
             </div>
-            <div class="mini-card">
-              <p class="mini-title">Redes</p>
-              <p class="muted">@losfrutosdemaria</p>
+            <div class="store-links">
+              <a href="https://www.amazon.com.mx/stores/page/E1B77F72-D5B0-47A2-BEB8-696403B0CFA9?ingress=2&lp_context_asin=B0DHFH4RKR&lp_context_query=los%20frutos%20de%20maria&visitId=accea786-ec7a-4c21-9a8b-a5302ca8bfb2&ref_=ast_bln" target="_blank" rel="noopener" class="store-card">
+                <span class="store-name">Amazon</span>
+                <span class="store-arrow">→</span>
+              </a>
+              <a href="https://www.liverpool.com.mx/tienda?s=los+frutos+de+mar%C3%ADa" target="_blank" rel="noopener" class="store-card">
+                <span class="store-name">Liverpool</span>
+                <span class="store-arrow">→</span>
+              </a>
+              <a href="#" target="_blank" rel="noopener" class="store-card">
+                <span class="store-name">Suburbia</span>
+                <span class="store-arrow">→</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Redes Sociales -->
+          <div class="contact-box animate-on-scroll" style="transition-delay: 0.2s;">
+            <div class="contact-box-header">
+              <span class="icon">📱</span>
+              <h3>Redes Sociales</h3>
+            </div>
+            <div class="store-links">
+              <a href="https://www.instagram.com/losfrutosdemaria_" target="_blank" rel="noopener" class="store-card">
+                <span class="store-name">Instagram</span>
+                <span class="store-arrow">→</span>
+              </a>
+              <a href="#" target="_blank" rel="noopener" class="store-card">
+                <span class="store-name">Facebook</span>
+                <span class="store-arrow">→</span>
+              </a>
             </div>
           </div>
         </div>
-
-        <form class="form" action="#" method="post" aria-label="Formulario de contacto">
-          <label>
-            Nombre
-            <input type="text" name="nombre" placeholder="Tu nombre" required>
-          </label>
-
-          <label>
-            Correo
-            <input type="email" name="email" placeholder="tucorreo@ejemplo.com" required>
-          </label>
-
-          <label>
-            ¿Qué te interesa?
-            <select name="interes" required>
-              <option value="" selected disabled>Selecciona una opción</option>
-              <option>Experiencias</option>
-              <option>Productos</option>
-              <option>Recomendación</option>
-              <option>Otro</option>
-            </select>
-          </label>
-
-          <label>
-            Mensaje
-            <textarea name="mensaje" rows="5" placeholder="Cuéntanos un poco de lo que necesitas…" required></textarea>
-          </label>
-
-          <button class="btn" type="submit">Enviar</button>
-          <p class="fineprint">Al enviar aceptas que te contactemos por correo. No compartimos tus datos.</p>
-        </form>
       </div>
     </section>
   </main>
@@ -245,6 +235,7 @@
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
   <script src="js/carousel.js" defer></script>
+  <script src="js/animations.js" defer></script>
 </body>
 
 </html>

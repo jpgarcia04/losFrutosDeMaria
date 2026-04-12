@@ -780,7 +780,7 @@ p {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .contact {
+  .contact-grid {
     grid-template-columns: 1fr;
     gap: 30px;
   }
@@ -861,7 +861,7 @@ p {
     font-size: 36px;
   }
 
-  .contact-cards {
+  .contact-grid {
     grid-template-columns: 1fr;
   }
 }

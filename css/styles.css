@@ -542,6 +542,23 @@ p {
   margin-top: auto;
 }
 
+/* Card completamente clickeable */
+.experience-card-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  border-radius: var(--radius-lg);
+}
+
+.experience-card-link:hover .experience-card {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(31, 28, 23, 0.12);
+}
+
+.experience-card-link:hover .experience-card__image {
+  transform: scale(1.05);
+}
+
 /* =========================================
    7. PRODUCTOS (Botica Natural)
    ========================================= */
@@ -769,6 +786,54 @@ p {
 }
 
 /* =========================================
+   HAMBURGER MENU
+   ========================================= */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+  flex-shrink: 0;
+}
+
+.nav-toggle:hover {
+  background: var(--olive-light);
+}
+
+.nav-toggle__line {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--ink);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform-origin: center;
+}
+
+/* X cuando el menú está abierto */
+.nav-toggle--open .nav-toggle__line:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle--open .nav-toggle__line:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.nav-toggle--open .nav-toggle__line:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* =========================================
    9. RESPONSIVE
    ========================================= */
 @media (max-width: 900px) {
@@ -798,13 +863,11 @@ p {
   }
 
   .brand {
-    width: 100%;
+    /* logo a la izq, hamburger a la der */
   }
 
   .brand-text {
     flex-grow: 1;
-    text-align: center;
-    padding-right: 56px;
   }
 
   .brand-mark {
@@ -820,17 +883,60 @@ p {
     display: none;
   }
 
+  /* Mostrar hamburger */
+  .nav-toggle {
+    display: flex;
+  }
+
+  /* Menú colapsado por defecto */
   .nav {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    position: absolute;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    background: var(--sand-glass);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--stroke);
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                padding 0.35s ease;
+    z-index: 99;
+  }
+
+  /* Menú abierto */
+  .nav.nav--open {
+    max-height: 320px;
+    padding: 8px 0 16px;
+  }
+
+  .nav a:not(.btn) {
+    width: 100%;
+    padding: 14px 24px;
+    font-size: 18px;
+    border-bottom: 1px solid var(--stroke);
+  }
+
+  .nav a:not(.btn)::after {
     display: none;
   }
 
-  /* Nota: Aquí requerirías JS/CSS extra para menú móvil */
+  .nav .btn {
+    margin: 14px 24px 0;
+    align-self: flex-start;
+  }
 }
 
 @media (max-width: 768px) {
   .experience-card {
     grid-template-columns: 1fr;
-    max-width: 500px;
+    max-width: 420px;
     margin: 0 auto;
   }
 
@@ -839,8 +945,16 @@ p {
   }
 
   .experience-card__image-wrapper {
-    height: 220px;
+    height: 250px;
     min-height: auto;
+    max-height: none;
+    aspect-ratio: auto;
+    background-color: #000;
+  }
+
+  .experience-card__image {
+    border-radius: 0;
+    object-fit: contain;
   }
 
   .experience-card__content {

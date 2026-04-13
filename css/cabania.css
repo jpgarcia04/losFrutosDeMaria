@@ -1,0 +1,307 @@
+/* =========================================
+   CABAÑA — Página dedicada
+   Mobile-First
+   ========================================= */
+
+/* ─── HERO VIDEO ─── */
+.cabana-hero {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  min-height: 320px;
+  max-height: 700px;
+  overflow: hidden;
+}
+
+.cabana-hero__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cabana-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(31, 28, 23, 0.15) 0%,
+    rgba(31, 28, 23, 0.05) 40%,
+    rgba(31, 28, 23, 0.55) 100%
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 32px 24px;
+}
+
+.cabana-hero__title {
+  font-family: var(--serif);
+  color: #fff;
+  font-size: clamp(28px, 6vw, 52px);
+  line-height: 1.1;
+  margin: 0 0 8px 0;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.35);
+}
+
+.cabana-hero__subtitle {
+  font-family: var(--sans);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: clamp(13px, 2.5vw, 17px);
+  font-weight: 400;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin: 0;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* ─── SECCIÓN DE INTRODUCCIÓN ─── */
+.cabana-intro {
+  text-align: center;
+  padding: 56px 24px;
+}
+
+.cabana-intro__text {
+  max-width: 640px;
+  margin: 0 auto;
+  font-size: 17px;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.cabana-intro__text strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* ─── TOUR SECTIONS ─── */
+.tour-section {
+  padding: 0 24px 56px;
+}
+
+.tour-section__header {
+  max-width: var(--container-width);
+  margin: 0 auto 24px;
+}
+
+.tour-section__eyebrow {
+  display: block;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  color: var(--rust);
+  margin-bottom: 6px;
+}
+
+.tour-section__title {
+  font-family: var(--serif);
+  font-size: clamp(24px, 4vw, 36px);
+  color: var(--ink);
+  margin: 0 0 4px 0;
+  line-height: 1.15;
+}
+
+.tour-section__desc {
+  font-size: 15px;
+  color: var(--muted);
+  margin: 8px 0 0 0;
+  max-width: 50ch;
+  line-height: 1.6;
+}
+
+/* ─── GALLERY GRID — Base Mobile (1 columna) ─── */
+.tour-gallery {
+  display: grid;
+  gap: 16px;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  grid-template-columns: 1fr;
+}
+
+.tour-gallery__item {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--sand);
+}
+
+.tour-gallery__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.tour-gallery__item:hover img {
+  transform: scale(1.04);
+}
+
+/* Aspect ratios para preservar la forma natural */
+.tour-gallery__item--portrait {
+  aspect-ratio: 3 / 4;
+}
+
+.tour-gallery__item--landscape {
+  aspect-ratio: 4 / 3;
+}
+
+.tour-gallery__item--tall {
+  aspect-ratio: 1 / 2;
+}
+
+/* ─── DIVIDER ─── */
+.tour-divider {
+  max-width: var(--container-width);
+  margin: 0 auto 56px;
+  border: none;
+  border-top: 1px solid var(--stroke);
+}
+
+/* ─── CTA FINAL ─── */
+.cabana-cta {
+  text-align: center;
+  padding: 64px 24px 80px;
+  background: rgba(255, 255, 255, 0.25);
+  border-top: 1px solid var(--stroke);
+}
+
+.cabana-cta__heading {
+  font-family: var(--serif);
+  font-size: clamp(28px, 5vw, 44px);
+  color: var(--ink);
+  margin: 0 0 12px 0;
+  line-height: 1.15;
+}
+
+.cabana-cta__text {
+  font-size: 17px;
+  color: var(--muted);
+  margin: 0 auto 32px;
+  max-width: 50ch;
+  line-height: 1.6;
+}
+
+.cabana-cta .btn {
+  font-size: 15px;
+  padding: 14px 32px;
+}
+
+/* ─── BACK LINK (top) ─── */
+.cabana-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 16px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--muted);
+  transition: color 0.25s ease;
+}
+
+.cabana-back:hover {
+  color: var(--rust);
+}
+
+/* ─── SCROLL ANIMATIONS ─── */
+.cabana-fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.cabana-fade-in.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================================
+   RESPONSIVE — Tablet (≥ 600px)
+   ========================================= */
+@media (min-width: 600px) {
+  .cabana-hero {
+    height: 75vh;
+  }
+
+  .cabana-hero__overlay {
+    padding: 48px 40px;
+  }
+
+  .tour-section {
+    padding: 0 40px 64px;
+  }
+
+  .tour-gallery {
+    gap: 20px;
+  }
+
+  /* Primer Piso: 2 portraits side by side */
+  .tour-gallery--primer-piso {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Segundo Piso: 2 portraits + 1 landscape full width */
+  .tour-gallery--segundo-piso {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .tour-gallery--segundo-piso .tour-gallery__item--landscape {
+    grid-column: 1 / -1;
+  }
+
+  /* Cocina y Baño: 2 columns — cocina tall left, baños stacked right */
+  .tour-gallery--cocina-bano {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+  }
+
+  .tour-gallery--cocina-bano .tour-gallery__item--tall {
+    grid-row: 1 / 3;
+  }
+
+  /* Playa: 3 portraits */
+  .tour-gallery--playa {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* =========================================
+   RESPONSIVE — Desktop (≥ 1024px)
+   ========================================= */
+@media (min-width: 1024px) {
+  .cabana-hero {
+    height: 85vh;
+    max-height: 800px;
+  }
+
+  .cabana-hero__overlay {
+    padding: 64px 80px;
+  }
+
+  .cabana-intro {
+    padding: 72px 24px;
+  }
+
+  .cabana-intro__text {
+    font-size: 19px;
+  }
+
+  .tour-section {
+    padding: 0 24px 80px;
+  }
+
+  .tour-gallery {
+    gap: 24px;
+  }
+
+  .cabana-cta {
+    padding: 80px 24px 100px;
+  }
+
+  .cabana-back {
+    padding: 20px 80px;
+  }
+}

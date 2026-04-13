@@ -1,0 +1,243 @@
+<!-- cabania.html -->
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="La Cabaña de Los Frutos de María: un refugio frente al mar en Zipolite, Oaxaca. Desconéctate del ruido y reconecta con la naturaleza." />
+  <title>La Cabaña — Los Frutos de María</title>
+
+  <!-- Tipografías -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&family=Mulish:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/cabania.css" />
+</head>
+
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Los Frutos de María, inicio">
+        <span class="brand-mark" aria-hidden="true">
+          <img src="images/logo.webp" alt="logo de los frutos de maria">
+        </span>
+        <span class="brand-text">
+          <span class="brand-name">LOS FRUTOS DE MARÍA</span>
+          <span class="brand-tagline">Stress free • Salud • Alimentación • Lifestyle • Descanso</span>
+        </span>
+      </a>
+
+      <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="main-nav" id="nav-toggle">
+        <span class="nav-toggle__line"></span>
+        <span class="nav-toggle__line"></span>
+        <span class="nav-toggle__line"></span>
+      </button>
+
+      <nav class="nav" id="main-nav" aria-label="Navegación principal">
+        <a href="index.html">Inicio</a>
+        <a href="index.html#productos">Productos</a>
+        <a class="btn btn--small btn--outline" href="index.html#contacto">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+
+    <!-- ── HERO VIDEO ── -->
+    <section class="cabana-hero" aria-label="Video de la cabaña">
+      <video class="cabana-hero__video"
+        src="images/cabania/cabaniaHero.webm"
+        autoplay muted loop playsinline
+        disablePictureInPicture
+        aria-hidden="true">
+      </video>
+      <div class="cabana-hero__overlay">
+        <h1 class="cabana-hero__title">La Cabaña</h1>
+        <p class="cabana-hero__subtitle">Zipolite, Oaxaca — Frente al mar</p>
+      </div>
+    </section>
+
+
+    <!-- ── INTRODUCCIÓN ── -->
+    <section class="cabana-intro cabana-fade-in">
+      <p class="cabana-intro__text">
+        A pocos pasos de la playa más libre de Oaxaca, <strong>La Cabaña</strong> es un refugio
+        pensado para desconectarte del ruido y reconectar con lo que importa. Dos pisos, espacio
+        para cuatro personas y el sonido del mar como única compañía. <br><br>
+        Recorre cada rincón de este espacio con nosotros.
+      </p>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         TOUR — PRIMER PISO
+         ══════════════════════════════════════ -->
+    <section class="tour-section cabana-fade-in">
+      <div class="tour-section__header">
+        <span class="tour-section__eyebrow">01 — Planta baja</span>
+        <h2 class="tour-section__title">El primer piso</h2>
+        <p class="tour-section__desc">
+          Al cruzar la puerta te recibe un espacio abierto, cálido y lleno de luz natural.
+          Pisos de madera, muebles artesanales y la brisa del Pacífico entrando por cada ventana.
+        </p>
+      </div>
+      <div class="tour-gallery tour-gallery--primer-piso">
+        <div class="tour-gallery__item tour-gallery__item--portrait">
+          <img src="images/cabania/primerPiso1.webp" alt="Sala del primer piso con muebles de madera y luz natural" loading="lazy">
+        </div>
+        <div class="tour-gallery__item tour-gallery__item--portrait">
+          <img src="images/cabania/primerPiso2.webp" alt="Vista interior del primer piso hacia el jardín" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <hr class="tour-divider">
+
+    <!-- ══════════════════════════════════════
+         TOUR — SEGUNDO PISO
+         ══════════════════════════════════════ -->
+    <section class="tour-section cabana-fade-in">
+      <div class="tour-section__header">
+        <span class="tour-section__eyebrow">02 — Planta alta</span>
+        <h2 class="tour-section__title">El segundo piso</h2>
+        <p class="tour-section__desc">
+          Sube las escaleras y encuentra las recámaras: dos camas dobles, espacio
+          para cuatro personas y una vista que te acompaña desde que abres los ojos.
+        </p>
+      </div>
+      <div class="tour-gallery tour-gallery--segundo-piso">
+        <div class="tour-gallery__item tour-gallery__item--portrait">
+          <img src="images/cabania/segundoPiso1.webp" alt="Recámara principal con vista al mar" loading="lazy">
+        </div>
+        <div class="tour-gallery__item tour-gallery__item--portrait">
+          <img src="images/cabania/segundoPiso2.webp" alt="Segunda recámara con decoración rústica" loading="lazy">
+        </div>
+        <div class="tour-gallery__item tour-gallery__item--landscape">
+          <img src="images/cabania/segundoPiso3.webp" alt="Panorámica del segundo piso con vista exterior" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <hr class="tour-divider">
+
+    <!-- ══════════════════════════════════════
+         TOUR — COCINA & BAÑO
+         ══════════════════════════════════════ -->
+    <section class="tour-section cabana-fade-in">
+      <div class="tour-section__header">
+        <span class="tour-section__eyebrow">03 — Espacios prácticos</span>
+        <h2 class="tour-section__title">Cocina y baño</h2>
+        <p class="tour-section__desc">
+          Todo lo que necesitas para sentirte en casa. Una cocina equipada y
+          un baño rústico que no pierde detalle.
+        </p>
+      </div>
+      <div class="tour-gallery tour-gallery--cocina-bano">
+        <div class="tour-gallery__item tour-gallery__item--tall">
+          <img src="images/cabania/cocina.webp" alt="Cocina equipada con barra y utensilios" loading="lazy">
+        </div>
+        <div class="tour-gallery__item tour-gallery__item--portrait">
+          <img src="images/cabania/banio1.webp" alt="Baño principal con acabados rústicos" loading="lazy">
+        </div>
+        <div class="tour-gallery__item tour-gallery__item--landscape">
+          <img src="images/cabania/banio2.webp" alt="Detalle del lavabo con espejo redondo" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <hr class="tour-divider">
+
+    <!-- ══════════════════════════════════════
+         TOUR — LA PLAYA
+         ══════════════════════════════════════ -->
+    <section class="tour-section cabana-fade-in">
+      <div class="tour-section__header">
+        <span class="tour-section__eyebrow">04 — A unos pasos</span>
+        <h2 class="tour-section__title">La playa</h2>
+        <p class="tour-section__desc">
+          Sales de la cabaña, caminas unos metros y llegas. Arena, olas y atardeceres que
+          no necesitan filtro. Zipolite en su forma más pura.
+        </p>
+      </div>
+      <div class="tour-gallery tour-gallery--playa">
+        <div class="tour-gallery__item tour-gallery__item--portrait">
+          <img src="images/cabania/playa1.webp" alt="Playa de Zipolite con olas suaves y cielo despejado" loading="lazy">
+        </div>
+        <div class="tour-gallery__item tour-gallery__item--portrait">
+          <img src="images/cabania/playa2.webp" alt="Arena dorada y vegetación tropical junto al mar" loading="lazy">
+        </div>
+        <div class="tour-gallery__item tour-gallery__item--portrait">
+          <img src="images/cabania/playa3.webp" alt="Vista panorámica de la costa de Zipolite al atardecer" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CTA FINAL ── -->
+    <section class="cabana-cta cabana-fade-in">
+      <h2 class="cabana-cta__heading">Ven a conocerla</h2>
+      <p class="cabana-cta__text">
+        ¿Te imaginas despertar con el sonido del mar? Escríbenos y reserva tu
+        experiencia en La Cabaña.
+      </p>
+      <a href="index.html#contacto" class="btn">Contáctanos →</a>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Los Frutos de María. Todos los derechos reservados.</p>
+      <div class="footer-links">
+        <a href="index.html">Inicio</a>
+        <a href="index.html#experiencias">Experiencias</a>
+        <a href="index.html#productos">Productos</a>
+        <a href="index.html#contacto">Contacto</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Hamburger menu
+    const toggle = document.getElementById('nav-toggle');
+    const nav = document.getElementById('main-nav');
+    toggle.addEventListener('click', () => {
+      const isOpen = nav.classList.toggle('nav--open');
+      toggle.setAttribute('aria-expanded', isOpen);
+      toggle.classList.toggle('nav-toggle--open', isOpen);
+    });
+    nav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('nav--open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.classList.remove('nav-toggle--open');
+      });
+    });
+  </script>
+  <script src="js/animations.js" defer></script>
+  <script>
+    // Scroll animations for cabana-specific elements
+    document.addEventListener('DOMContentLoaded', () => {
+      const fadeEls = document.querySelectorAll('.cabana-fade-in');
+      const obs = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+      fadeEls.forEach(el => obs.observe(el));
+    });
+  </script>
+</body>
+
+</html>

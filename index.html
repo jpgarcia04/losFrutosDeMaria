@@ -16,7 +16,7 @@
     href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&family=Mulish:wght@300;400;500;600;700&display=swap"
     rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 
 <body>
@@ -34,8 +34,14 @@
         </span>
       </a>
 
-      <nav class="nav" aria-label="Navegación principal">
-        <a href="#experiencias">Experiencias</a>
+      <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="main-nav" id="nav-toggle">
+        <span class="nav-toggle__line"></span>
+        <span class="nav-toggle__line"></span>
+        <span class="nav-toggle__line"></span>
+      </button>
+
+      <nav class="nav" id="main-nav" aria-label="Navegación principal">
+        <a href="index.html">Inicio</a>
         <a href="#productos">Productos</a>
         <a class="btn btn--small btn--outline" href="#contacto">Contacto</a>
       </nav>
@@ -128,6 +134,7 @@
 
         <div class="experiences-list">
 
+          <a href="cabania.html" class="experience-card-link" aria-label="Conoce La Cabaña">
           <article class="experience-card animate-on-scroll" style="transition-delay: 0.1s;">
             <div class="experience-card__image-wrapper">
               <img src="images/cabania/cabania.webp" alt="Interior rústico de la cabaña en Zipolite con vista al mar"
@@ -143,12 +150,15 @@
 
               <p>
                 Despierta con el sonido de la costa Oaxaqueña. Nuestra cabaña está construida en un espacio privado,
-                alejado del ruido, ideal para parejas o retiros personales.
+                alejado del ruido, ideal para familias pequeñas o retiros entre amigos.
               </p>
 
               <ul class="amenities-list">
                 <li>
-                  <span class="icon">👥</span> 2 Personas
+                  <span class="icon">👥</span> 4 Personas
+                </li>
+                <li>
+                  <span class="icon">🛏️</span> 2 Camas dobles
                 </li>
                 <li>
                   <span class="icon">🌊</span> Vista al mar
@@ -156,10 +166,11 @@
               </ul>
 
               <div class="experience-card__footer">
-                <a href="#contacto" class="btn btn--small">Ver disponibilidad →</a>
+                <a href="cabania.html" class="btn btn--small">Conócela →</a>
               </div>
             </div>
           </article>
+          </a>
 
         </div>
       </div>
@@ -231,8 +242,24 @@
   </footer>
 
   <script>
-    // detalle mínimo: año automático
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Hamburger menu
+    const toggle = document.getElementById('nav-toggle');
+    const nav = document.getElementById('main-nav');
+    toggle.addEventListener('click', () => {
+      const isOpen = nav.classList.toggle('nav--open');
+      toggle.setAttribute('aria-expanded', isOpen);
+      toggle.classList.toggle('nav-toggle--open', isOpen);
+    });
+    // Close on link click
+    nav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('nav--open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.classList.remove('nav-toggle--open');
+      });
+    });
   </script>
   <script src="js/carousel.js" defer></script>
   <script src="js/animations.js" defer></script>

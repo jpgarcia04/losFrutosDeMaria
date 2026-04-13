@@ -17,6 +17,7 @@
     rel="stylesheet">
 
   <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/productos.css" />
 </head>
 
 <body>
@@ -71,56 +72,122 @@
       <div class="container">
         <div class="section-head animate-on-scroll">
           <h2>Productos</h2>
-          <p>Productos con CBD diseñadas para nutrir y calmar tu mente y cuerpo.</p>
+          <p>Productos con CBD diseñados para nutrir y calmar tu mente y cuerpo.</p>
         </div>
+      </div>
 
-        <div class="carousel-container animate-on-scroll" style="transition-delay: 0.1s;">
-          <input checked type="radio" name="slider" id="slide1" />
-          <input type="radio" name="slider" id="slide2" />
-          <input type="radio" name="slider" id="slide3" />
+      <div class="product-carousel animate-on-scroll" style="transition-delay: 0.1s;">
+          <button class="product-carousel__nav product-carousel__nav--prev" aria-label="Anterior">❮</button>
+          <button class="product-carousel__nav product-carousel__nav--next" aria-label="Siguiente">❯</button>
 
-          <div class="carousel-wrapper">
-            <div class="carousel-inner">
+          <div class="product-carousel__track">
+            <!-- Gotas LFDM -->
+            <a href="gotas.html" class="product-card" id="card-gotas">
+              <div class="product-card__image">
+                <img src="images/productos/gotas1.webp" alt="Gotas LFDM con CBD" loading="lazy" />
+                <div class="product-card__image-overlay"></div>
+              </div>
+              <div class="product-card__content">
+                <h3 class="product-card__name">Gotas LFDM</h3>
+                <p class="product-card__tagline">Tu entrada simple al bienestar diario. Calma, claridad y rutina estable.</p>
+                <span class="product-card__cta">Conocer más →</span>
+              </div>
+            </a>
 
-              <article>
-                <div class="carousel-info">
-                  <h3>Skin Care</h3>
-                  <h4>Elixir ligero de hidratación profunda y CBD</h4>
-                </div>
-                <img src="images/skincare.webp" alt="Skin Care" />
-              </article>
+            <!-- Crema Facial Nocturna -->
+            <a href="crema-facial.html" class="product-card" id="card-crema-facial">
+              <div class="product-card__image">
+                <img src="images/productos/cremaFacial1.webp" alt="Crema Facial Nocturna LFDM con CBD y Colágeno" loading="lazy" />
+                <div class="product-card__image-overlay"></div>
+              </div>
+              <div class="product-card__content">
+                <h3 class="product-card__name">Crema Facial Nocturna</h3>
+                <p class="product-card__tagline">Skincare que se siente como descanso. CBD + Colágeno.</p>
+                <span class="product-card__cta">Conocer más →</span>
+              </div>
+            </a>
 
-              <article>
-                <div class="carousel-info">
-                  <h3>Zona Zen</h3>
-                  <h4>Vela aromática y aceite para masajes 2 en 1</h4>
-                </div>
-                <img src="images/velas.webp" alt="Zona Zen" />
-              </article>
+            <!-- Pomada / Bálsamo Corporal -->
+            <a href="pomada.html" class="product-card" id="card-pomada">
+              <div class="product-card__image">
+                <img src="images/productos/pomada1.webp" alt="Pomada Bálsamo Corporal LFDM" loading="lazy" />
+                <div class="product-card__image-overlay"></div>
+              </div>
+              <div class="product-card__content">
+                <h3 class="product-card__name">Pomada / Bálsamo</h3>
+                <p class="product-card__tagline">Para soltar tensión y volver al cuerpo. Ritual corporal de alivio.</p>
+                <span class="product-card__cta">Conocer más →</span>
+              </div>
+            </a>
 
-              <article>
-                <div class="carousel-info">
-                  <h3>Bienestar Natural</h3>
-                  <h4>Descubre los beneficios del CBD</h4>
-                </div>
-                <img src="images/TiposCann.webp" alt="Bienestar Natural" />
-              </article>
+            <!-- Shampoo -->
+            <a href="shampoo.html" class="product-card" id="card-shampoo">
+              <div class="product-card__image">
+                <img src="images/productos/shampoo1.webp" alt="Shampoo LFDM con CBD" loading="lazy" />
+                <div class="product-card__image-overlay"></div>
+              </div>
+              <div class="product-card__content">
+                <h3 class="product-card__name">Shampoo LFDM</h3>
+                <p class="product-card__tagline">Rutina simple, mente más ligera. Cuidado consciente.</p>
+                <span class="product-card__cta">Conocer más →</span>
+              </div>
+            </a>
 
+            <!-- Vela Aromática -->
+            <a href="vela.html" class="product-card" id="card-vela">
+              <div class="product-card__image">
+                <img src="images/productos/velas1.webp" alt="Vela Aromática LFDM" loading="lazy" />
+                <div class="product-card__image-overlay"></div>
+              </div>
+              <div class="product-card__content">
+                <h3 class="product-card__name">Vela Aromática</h3>
+                <p class="product-card__tagline">Atmósfera que baja el ruido. Luz, aroma y presencia.</p>
+                <span class="product-card__cta">Conocer más →</span>
+              </div>
+            </a>
+
+            <!-- Gel Íntimo -->
+            <a href="gel-intimo.html" class="product-card" id="card-gel-intimo">
+              <div class="product-card__image">
+                <img src="images/productos/gelIntimo1.webp" alt="Gel Íntimo LFDM" loading="lazy" />
+                <div class="product-card__image-overlay"></div>
+              </div>
+              <div class="product-card__content">
+                <h3 class="product-card__name">Gel Íntimo</h3>
+                <p class="product-card__tagline">Confort personal, sin tabú ni drama. Cuidado discreto.</p>
+                <span class="product-card__cta">Conocer más →</span>
+              </div>
+            </a>
+
+            <!-- Protector Solar (Próximamente) -->
+            <a href="protector-solar.html" class="product-card" id="card-protector-solar">
+              <div class="product-card__image">
+                <img src="images/productos/protectorSolar1.webp" alt="Protector Solar LFDM — Próximamente" loading="lazy" />
+                <div class="product-card__image-overlay"></div>
+                <span class="product-card__badge">Próximamente</span>
+              </div>
+              <div class="product-card__content">
+                <h3 class="product-card__name">Protector Solar</h3>
+                <p class="product-card__tagline">Bienestar también es protección. Producto en desarrollo.</p>
+                <span class="product-card__cta">Ver más →</span>
+              </div>
+            </a>
+
+            <!-- Avisos / Disclaimers -->
+            <div class="product-card product-card--disclaimer" id="card-disclaimers">
+              <div class="product-card__content">
+                <span class="disclaimer-icon">⚖️</span>
+                <h3 class="product-card__name">Avisos Importantes</h3>
+                <p class="product-card__tagline">
+                  • Uso responsable: la información de este sitio es informativa y no sustituye asesoría médica.<br><br>
+                  • Nuestros productos no están destinados a diagnosticar, tratar, curar o prevenir enfermedades.<br><br>
+                  • Si estás embarazada/o, lactando o bajo tratamiento, consulta a un profesional de salud antes de usar cualquier producto.
+                </p>
+              </div>
             </div>
           </div>
 
-          <div class="slider-prev-next-control">
-            <label for="slide1"></label>
-            <label for="slide2"></label>
-            <label for="slide3"></label>
-          </div>
-
-          <div class="slider-dot-control">
-            <label for="slide1"></label>
-            <label for="slide2"></label>
-            <label for="slide3"></label>
-          </div>
-        </div>
+          <div class="product-carousel__dots"></div>
       </div>
     </section>
 
@@ -135,41 +202,41 @@
         <div class="experiences-list">
 
           <a href="cabania.html" class="experience-card-link" aria-label="Conoce La Cabaña">
-          <article class="experience-card animate-on-scroll" style="transition-delay: 0.1s;">
-            <div class="experience-card__image-wrapper">
-              <img src="images/cabania/cabania.webp" alt="Interior rústico de la cabaña en Zipolite con vista al mar"
-                class="experience-card__image">
-              <span class="badge-floating">Zipolite, Oaxaca</span>
-            </div>
-
-            <div class="experience-card__content">
-              <div class="experience-card__header">
-                <span class="eyebrow">Hospedaje • Eco-Luxury</span>
-                <h3>La Cabaña: Refugio frente al mar</h3>
+            <article class="experience-card animate-on-scroll" style="transition-delay: 0.1s;">
+              <div class="experience-card__image-wrapper">
+                <img src="images/cabania/cabania.webp" alt="Interior rústico de la cabaña en Zipolite con vista al mar"
+                  class="experience-card__image">
+                <span class="badge-floating">Zipolite, Oaxaca</span>
               </div>
 
-              <p>
-                Despierta con el sonido de la costa Oaxaqueña. Nuestra cabaña está construida en un espacio privado,
-                alejado del ruido, ideal para familias pequeñas o retiros entre amigos.
-              </p>
+              <div class="experience-card__content">
+                <div class="experience-card__header">
+                  <span class="eyebrow">Hospedaje • Eco-Luxury</span>
+                  <h3>La Cabaña: Refugio frente al mar</h3>
+                </div>
 
-              <ul class="amenities-list">
-                <li>
-                  <span class="icon">👥</span> 4 Personas
-                </li>
-                <li>
-                  <span class="icon">🛏️</span> 2 Camas dobles
-                </li>
-                <li>
-                  <span class="icon">🌊</span> Vista al mar
-                </li>
-              </ul>
+                <p>
+                  Despierta con el sonido de la costa Oaxaqueña. Nuestra cabaña está construida en un espacio privado,
+                  alejado del ruido, ideal para familias pequeñas o retiros entre amigos.
+                </p>
 
-              <div class="experience-card__footer">
-                <a href="cabania.html" class="btn btn--small">Conócela →</a>
+                <ul class="amenities-list">
+                  <li>
+                    <span class="icon">👥</span> 4 Personas
+                  </li>
+                  <li>
+                    <span class="icon">🛏️</span> 2 Camas dobles
+                  </li>
+                  <li>
+                    <span class="icon">🌊</span> Vista al mar
+                  </li>
+                </ul>
+
+                <div class="experience-card__footer">
+                  <a href="cabania.html" class="btn btn--small">Conócela →</a>
+                </div>
               </div>
-            </div>
-          </article>
+            </article>
           </a>
 
         </div>
@@ -181,7 +248,8 @@
       <div class="container">
         <div class="section-head animate-on-scroll" style="text-align: center;">
           <h2>Encuéntranos</h2>
-          <p style="margin: 0 auto;">Adquiere nuestros productos o ponte en contacto a través de nuestras redes sociales.</p>
+          <p style="margin: 0 auto;">Adquiere nuestros productos o ponte en contacto a través de nuestras redes
+            sociales.</p>
         </div>
 
         <div class="contact-grid">
@@ -192,15 +260,17 @@
               <h3>Puntos de Venta</h3>
             </div>
             <div class="store-links">
-              <a href="https://www.amazon.com.mx/stores/page/E1B77F72-D5B0-47A2-BEB8-696403B0CFA9?ingress=2&lp_context_asin=B0DHFH4RKR&lp_context_query=los%20frutos%20de%20maria&visitId=accea786-ec7a-4c21-9a8b-a5302ca8bfb2&ref_=ast_bln" target="_blank" rel="noopener" class="store-card">
+              <a href="https://www.amazon.com.mx/stores/page/E1B77F72-D5B0-47A2-BEB8-696403B0CFA9?ingress=2&lp_context_asin=B0DHFH4RKR&lp_context_query=los%20frutos%20de%20maria&visitId=accea786-ec7a-4c21-9a8b-a5302ca8bfb2&ref_=ast_bln"
+                target="_blank" rel="noopener" class="store-card">
                 <span class="store-name">Amazon</span>
                 <span class="store-arrow">→</span>
               </a>
-              <a href="https://www.liverpool.com.mx/tienda?s=los+frutos+de+mar%C3%ADa" target="_blank" rel="noopener" class="store-card">
+              <a href="https://www.liverpool.com.mx/tienda?s=los+frutos+de+mar%C3%ADa" target="_blank" rel="noopener"
+                class="store-card">
                 <span class="store-name">Liverpool</span>
                 <span class="store-arrow">→</span>
               </a>
-              <a href="#" target="_blank" rel="noopener" class="store-card">
+              <a href="https://www.suburbia.com.mx/tienda?s=los+frutos+de+maria" target="_blank" rel="noopener" class="store-card">
                 <span class="store-name">Suburbia</span>
                 <span class="store-arrow">→</span>
               </a>
@@ -215,11 +285,34 @@
             </div>
             <div class="store-links">
               <a href="https://www.instagram.com/losfrutosdemaria_" target="_blank" rel="noopener" class="store-card">
-                <span class="store-name">Instagram</span>
+                <span class="store-name" style="display: flex; align-items: center; gap: 12px;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-instagram">
+                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+                  </svg>
+                  Instagram
+                </span>
                 <span class="store-arrow">→</span>
               </a>
               <a href="#" target="_blank" rel="noopener" class="store-card">
-                <span class="store-name">Facebook</span>
+                <span class="store-name" style="display: flex; align-items: center; gap: 12px;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"
+                    stroke="none" class="lucide lucide-facebook-filled">
+                    <path
+                      d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                  </svg>
+                  Facebook
+                </span>
+                <span class="store-arrow">→</span>
+              </a>
+              <a href="https://wa.me/524272792675" target="_blank" rel="noopener" class="store-card">
+                <span class="store-name" style="display: flex; align-items: center; gap: 12px;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.414 0 .01 5.403.006 12.039a11.81 11.81 0 001.57 5.961L0 24l6.128-1.609a11.846 11.846 0 005.917 1.586h.006c6.635 0 12.04-5.402 12.042-12.041a11.798 11.798 0 00-3.532-8.514z"/></svg>
+                  Efrain Aizman (+52 427 279 2675)
+                </span>
                 <span class="store-arrow">→</span>
               </a>
             </div>

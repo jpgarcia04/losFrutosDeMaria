@@ -2,8 +2,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const track = document.querySelector('.product-carousel__track');
     if (!track) return;
 
-    const prevBtn = document.querySelector('.product-carousel__nav--prev');
-    const nextBtn = document.querySelector('.product-carousel__nav--next');
+    // Desktop arrows
+    const prevBtnDesktop = document.querySelector('.product-carousel__nav--prev.product-carousel__nav--desktop');
+    const nextBtnDesktop = document.querySelector('.product-carousel__nav--next.product-carousel__nav--desktop');
+
+    // Mobile arrows (inside controls)
+    const prevBtnMobile = document.querySelector('.product-carousel__nav--prev.product-carousel__nav--mobile');
+    const nextBtnMobile = document.querySelector('.product-carousel__nav--next.product-carousel__nav--mobile');
+
     const dotsContainer = document.querySelector('.product-carousel__dots');
 
     // Calculate scroll amount (one card width + gap)
@@ -17,10 +23,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Update nav button visibility
     const updateNav = () => {
-        if (!prevBtn || !nextBtn) return;
         const { scrollLeft, scrollWidth, clientWidth } = track;
-        prevBtn.disabled = scrollLeft <= 5;
-        nextBtn.disabled = scrollLeft + clientWidth >= scrollWidth - 5;
+        const atStart = scrollLeft <= 5;
+        const atEnd = scrollLeft + clientWidth >= scrollWidth - 5;
+
+        [prevBtnDesktop, prevBtnMobile].forEach(btn => {
+            if (btn) btn.disabled = atStart;
+        });
+        [nextBtnDesktop, nextBtnMobile].forEach(btn => {
+            if (btn) btn.disabled = atEnd;
+        });
     };
 
     // Build dots
@@ -55,18 +67,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // Navigation
-    if (prevBtn) {
-        prevBtn.addEventListener('click', () => {
-            track.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
-        });
-    }
+    // Scroll handlers
+    const scrollPrev = () => {
+        track.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+    };
+    const scrollNext = () => {
+        track.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+    };
 
-    if (nextBtn) {
-        nextBtn.addEventListener('click', () => {
-            track.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
-        });
-    }
+    // Bind all prev/next buttons
+    [prevBtnDesktop, prevBtnMobile].forEach(btn => {
+        if (btn) btn.addEventListener('click', scrollPrev);
+    });
+    [nextBtnDesktop, nextBtnMobile].forEach(btn => {
+        if (btn) btn.addEventListener('click', scrollNext);
+    });
 
     // Track events
     track.addEventListener('scroll', () => {

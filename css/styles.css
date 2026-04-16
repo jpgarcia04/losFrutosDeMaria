@@ -54,6 +54,7 @@ html {
 
 body {
   margin: 0;
+  padding: 0 16px;
   font-family: var(--sans);
   color: var(--ink);
   background: var(--sand);
@@ -906,7 +907,7 @@ p {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                padding 0.35s ease;
+      padding 0.35s ease;
     z-index: 99;
   }
 
@@ -979,5 +980,3 @@ p {
     grid-template-columns: 1fr;
   }
 }
-
-

@@ -77,8 +77,8 @@
       </div>
 
       <div class="product-carousel animate-on-scroll" style="transition-delay: 0.1s;">
-          <button class="product-carousel__nav product-carousel__nav--prev" aria-label="Anterior">❮</button>
-          <button class="product-carousel__nav product-carousel__nav--next" aria-label="Siguiente">❯</button>
+          <button class="product-carousel__nav product-carousel__nav--prev product-carousel__nav--desktop" aria-label="Anterior">❮</button>
+          <button class="product-carousel__nav product-carousel__nav--next product-carousel__nav--desktop" aria-label="Siguiente">❯</button>
 
           <div class="product-carousel__track">
             <!-- Gotas LFDM -->
@@ -187,7 +187,11 @@
             </div>
           </div>
 
-          <div class="product-carousel__dots"></div>
+          <div class="product-carousel__controls">
+            <button class="product-carousel__nav product-carousel__nav--prev product-carousel__nav--mobile" aria-label="Anterior">❮</button>
+            <div class="product-carousel__dots"></div>
+            <button class="product-carousel__nav product-carousel__nav--next product-carousel__nav--mobile" aria-label="Siguiente">❯</button>
+          </div>
       </div>
     </section>
 

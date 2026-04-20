@@ -747,6 +747,16 @@ p {
   font-size: 18px;
 }
 
+/* WhatsApp contact: inline por defecto (desktop) */
+.whatsapp-contact {
+  display: inline;
+}
+
+.whatsapp-name,
+.whatsapp-number {
+  display: inline;
+}
+
 /* =========================================
    ANIMATIONS (Scroll Premium)
    ========================================= */
@@ -842,6 +852,11 @@ p {
     --header-height: 90px;
   }
 
+  /* 1. Títulos de sección más pequeños en mobile */
+  .section-head h2 {
+    font-size: 30px;
+  }
+
   .grid-3 {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -917,20 +932,39 @@ p {
     padding: 8px 0 16px;
   }
 
-  .nav a:not(.btn) {
+  /* 5. Todas las opciones del menú móvil con mismo estilo */
+  .nav a {
     width: 100%;
     padding: 14px 24px;
     font-size: 18px;
+    font-weight: 500;
+    color: var(--ink);
     border-bottom: 1px solid var(--stroke);
+    display: block;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    text-align: left;
+    letter-spacing: normal;
   }
 
   .nav a:not(.btn)::after {
     display: none;
   }
 
-  .nav .btn {
-    margin: 14px 24px 0;
-    align-self: flex-start;
+  /* 4. WhatsApp contact: nombre y número en líneas separadas */
+  .whatsapp-contact {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .whatsapp-number {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--muted);
   }
 }
 
@@ -964,6 +998,11 @@ p {
 
   .experience-card__footer {
     justify-content: flex-start;
+  }
+
+  /* 2. Ocultar amenities en mobile — la info está en la página de la cabaña */
+  .amenities-list {
+    display: none;
   }
 }
 

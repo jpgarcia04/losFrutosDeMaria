@@ -20,8 +20,8 @@
   -webkit-overflow-scrolling: touch;
   padding: 24px 24px 44px;
   /* Fade edges */
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
-  mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 2%, black 98%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 2%, black 98%, transparent 100%);
   /* hide scrollbar but keep scroll */
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -746,6 +746,16 @@
 @media (max-width: 900px) {
   .product-card {
     flex: 0 0 260px;
+    scroll-snap-align: center;
+  }
+
+  /* 3. Centrar card activa con orillas de las adyacentes visibles */
+  .product-carousel__track {
+    scroll-padding: 0;
+    padding-left: calc(50% - 130px);
+    padding-right: calc(50% - 130px);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 2%, black 98%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, black 2%, black 98%, transparent 100%);
   }
 
   /* Hide desktop nav arrows */
@@ -782,6 +792,13 @@
 @media (max-width: 600px) {
   .product-card {
     flex: 0 0 220px;
+    scroll-snap-align: center;
+  }
+
+  /* Adjust padding for smaller card width */
+  .product-carousel__track {
+    padding-left: calc(50% - 110px);
+    padding-right: calc(50% - 110px);
   }
 
   .product-section {

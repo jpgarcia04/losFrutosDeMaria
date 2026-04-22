@@ -15,7 +15,6 @@
   display: flex;
   gap: 24px;
   overflow-x: auto;
-  scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   padding: 24px 24px 44px;
@@ -750,7 +749,6 @@
     scroll-snap-align: center;
   }
 
-  /* 3. Centrar card activa con orillas de las adyacentes visibles */
   .product-carousel__track {
     scroll-padding: 0;
     padding-left: calc(50% - 130px);
@@ -800,7 +798,6 @@
     scroll-snap-align: center;
   }
 
-  /* Adjust padding for smaller card width */
   .product-carousel__track {
     padding-left: calc(50% - 110px);
     padding-right: calc(50% - 110px);

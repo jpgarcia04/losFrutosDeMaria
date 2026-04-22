@@ -20,8 +20,8 @@
   -webkit-overflow-scrolling: touch;
   padding: 24px 24px 44px;
   /* Fade edges */
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 2%, black 98%, transparent 100%);
-  mask-image: linear-gradient(to right, transparent 0%, black 2%, black 98%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 1.5%, black 98.5%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 1.5%, black 98.5%, transparent 100%);
   /* hide scrollbar but keep scroll */
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -356,6 +356,7 @@
 /* ─── GALLERY STRIP (imágenes debajo del hero) ─── */
 .product-gallery {
   display: flex;
+  justify-content: center;
   gap: 16px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
@@ -754,8 +755,8 @@
     scroll-padding: 0;
     padding-left: calc(50% - 130px);
     padding-right: calc(50% - 130px);
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 2%, black 98%, transparent 100%);
-    mask-image: linear-gradient(to right, transparent 0%, black 2%, black 98%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
   }
 
   /* Hide desktop nav arrows */
@@ -781,6 +782,10 @@
 
   .product-hero__inner {
     padding: 20px 0;
+  }
+
+  .product-gallery {
+    justify-content: flex-start;
   }
 
   .product-gallery__item {
@@ -850,5 +855,144 @@
 
   .product-hero {
     padding: 80px 24px 60px;
+  }
+}
+
+/* =========================================
+   LIGHTBOX GALLERY
+   ========================================= */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.lightbox.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lightbox__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(18, 16, 13, 0.95);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.lightbox__content {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.lightbox__image-wrapper {
+  position: relative;
+  max-width: 100%;
+  max-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox__image {
+  max-width: 100%;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: var(--radius-sm, 8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  animation: lbZoomIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@keyframes lbZoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.lightbox__close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 48px;
+  height: 48px;
+  background: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.lightbox__close:hover {
+  color: var(--terracotta, #D96941);
+  transform: scale(1.1);
+}
+
+.lightbox__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 56px;
+  height: 56px;
+  background: transparent;
+  border: none;
+  color: rgba(255,255,255,0.7);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  transition: all 0.3s ease;
+}
+
+.lightbox__nav:hover {
+  color: #fff;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.lightbox__nav--prev {
+  left: 24px;
+}
+
+.lightbox__nav--next {
+  right: 24px;
+}
+
+@media (max-width: 768px) {
+  .lightbox__content {
+    padding: 16px 50px;
+  }
+  .lightbox__nav {
+    width: 40px;
+    height: 40px;
+  }
+  .lightbox__nav--prev { left: 8px; }
+  .lightbox__nav--next { right: 8px; }
+  
+  .lightbox__close {
+    top: 16px;
+    right: 16px;
+    width: 40px;
+    height: 40px;
   }
 }

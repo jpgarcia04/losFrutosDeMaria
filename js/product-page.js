@@ -24,10 +24,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
             variantTabs.forEach(t => t.classList.remove('is-active'));
             variantPanels.forEach(p => p.classList.remove('is-active'));
+            document.querySelectorAll('.link-panel').forEach(p => p.classList.remove('is-active'));
 
             tab.classList.add('is-active');
             const panel = document.getElementById(target);
             if (panel) panel.classList.add('is-active');
+            
+            document.querySelectorAll('.link-' + target).forEach(p => p.classList.add('is-active'));
         });
     });
 

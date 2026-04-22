@@ -737,6 +737,15 @@ p {
   box-shadow: 0 4px 12px rgba(244, 114, 60, 0.1);
 }
 
+.store-card img {
+  transition: filter 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.store-card:hover img {
+  /* Convierte la imagen a negra y luego la tiñe del color Terracotta (#F4723C) */
+  filter: brightness(0) saturate(100%) invert(53%) sepia(82%) saturate(2501%) hue-rotate(344deg) brightness(101%) contrast(93%);
+}
+
 .store-name {
   font-weight: 700;
 }

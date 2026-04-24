@@ -279,13 +279,15 @@
   object-fit: contain;
 }
 
-/* Fix específico para Colágeno: imagen más grande sin bordes blancos */
-.product-hero__image-wrapper--colageno {
+/* Fix específico para Colágeno y Almohada: imagen más grande sin bordes blancos */
+.product-hero__image-wrapper--colageno,
+.product-hero__image-wrapper--almohada {
   background: transparent;
-  box-shadow: none; /* Opcional: remover sombra si el fondo de la imagen ya es parte del diseño */
+  box-shadow: none;
 }
 
-.product-hero__image-wrapper--colageno img {
+.product-hero__image-wrapper--colageno img,
+.product-hero__image-wrapper--almohada img {
   object-fit: cover;
 }
 

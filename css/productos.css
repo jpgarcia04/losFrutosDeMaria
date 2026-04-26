@@ -136,8 +136,8 @@
 
 /* Card especial: Disclaimers */
 .product-card--disclaimer {
-  background: var(--ink);
-  border-color: var(--ink);
+  background: var(--deep-green);
+  border-color: var(--deep-green);
 }
 
 .product-card--disclaimer .product-card__content {
@@ -614,7 +614,7 @@
 
 /* ─── DISCLAIMER BANNER ─── */
 .product-disclaimer {
-  background: var(--ink);
+  background: var(--deep-green);
   padding: 40px 24px;
 }
 

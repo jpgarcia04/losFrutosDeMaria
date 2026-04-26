@@ -23,6 +23,9 @@
   --stroke: rgba(31, 28, 23, 0.12);
   /* Bordes sutiles */
 
+  --deep-green: #2b4521;
+  /* Verde profundo para avisos */
+
   --card-bg: rgba(255, 255, 255, 0.55);
   --shadow-soft: 0 14px 40px rgba(31, 28, 23, 0.08);
   --shadow-hover: 0 18px 34px rgba(244, 114, 60, 0.15);

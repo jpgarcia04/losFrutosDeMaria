@@ -53,11 +53,8 @@
 
     <!-- ── HERO VIDEO ── -->
     <section class="cabana-hero" aria-label="Video de la cabaña">
-      <video class="cabana-hero__video"
-        src="images/cabania/cabaniaHero.webm"
-        autoplay muted loop playsinline
-        disablePictureInPicture
-        aria-hidden="true">
+      <video class="cabana-hero__video" src="images/cabania/cabaniaHero.webm" autoplay muted loop playsinline
+        disablePictureInPicture aria-hidden="true">
       </video>
       <div class="cabana-hero__overlay">
         <h1 class="cabana-hero__title">La Cabaña</h1>
@@ -90,10 +87,12 @@
       </div>
       <div class="tour-gallery tour-gallery--primer-piso">
         <div class="tour-gallery__item tour-gallery__item--portrait">
-          <img src="images/cabania/primerPiso1.webp" alt="Sala del primer piso con muebles de madera y luz natural" loading="lazy">
+          <img src="images/cabania/primerPiso1.webp" alt="Sala del primer piso con muebles de madera y luz natural"
+            loading="lazy">
         </div>
         <div class="tour-gallery__item tour-gallery__item--portrait">
-          <img src="images/cabania/primerPiso2.webp" alt="Vista interior del primer piso hacia el jardín" loading="lazy">
+          <img src="images/cabania/primerPiso2.webp" alt="Vista interior del primer piso hacia el jardín"
+            loading="lazy">
         </div>
       </div>
     </section>
@@ -120,7 +119,8 @@
           <img src="images/cabania/segundoPiso2.webp" alt="Segunda recámara con decoración rústica" loading="lazy">
         </div>
         <div class="tour-gallery__item tour-gallery__item--landscape">
-          <img src="images/cabania/segundoPiso3.webp" alt="Panorámica del segundo piso con vista exterior" loading="lazy">
+          <img src="images/cabania/segundoPiso3.webp" alt="Panorámica del segundo piso con vista exterior"
+            loading="lazy">
         </div>
       </div>
     </section>
@@ -168,16 +168,39 @@
       </div>
       <div class="tour-gallery tour-gallery--playa">
         <div class="tour-gallery__item tour-gallery__item--portrait">
-          <img src="images/cabania/playa1.webp" alt="Playa de Zipolite con olas suaves y cielo despejado" loading="lazy">
+          <img src="images/cabania/playa1.webp" alt="Playa de Zipolite con olas suaves y cielo despejado"
+            loading="lazy">
         </div>
         <div class="tour-gallery__item tour-gallery__item--portrait">
           <img src="images/cabania/playa2.webp" alt="Arena dorada y vegetación tropical junto al mar" loading="lazy">
         </div>
         <div class="tour-gallery__item tour-gallery__item--portrait">
-          <img src="images/cabania/playa3.webp" alt="Vista panorámica de la costa de Zipolite al atardecer" loading="lazy">
+          <img src="images/cabania/playa3.webp" alt="Vista panorámica de la costa de Zipolite al atardecer"
+            loading="lazy">
         </div>
       </div>
     </section>
+
+    <!-- ── MAPA ── -->
+    <section class="cabana-map cabana-fade-in" aria-label="Ubicación de la cabaña">
+      <div class="cabana-map__header">
+        <span class="tour-section__eyebrow">05 — Ubicación</span>
+        <h2 class="tour-section__title">¿Cómo llegar?</h2>
+        <p class="tour-section__desc">
+          Encuéntranos en Zipolite, Oaxaca — uno de los rincones más auténticos de la costa del
+          Pacífico mexicano. El mar te espera.
+        </p>
+      </div>
+      <div class="cabana-map__frame">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3841.6304820177284!2d-96.5322645248726!3d15.664653584957714!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85b9299b0ffc1d4d%3A0xcc53b2d6c59892a2!2sLos%20Frutos%20de%20Maria.!5e0!3m2!1ses-419!2smx!4v1777170381977!5m2!1ses-419!2smx"
+          title="Ubicación de Los Frutos de María en Zipolite, Oaxaca" width="100%" height="450" style="border:0;"
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </section>
+
+    <hr class="tour-divider">
 
     <!-- ── CTA FINAL ── -->
     <section class="cabana-cta cabana-fade-in">
@@ -236,6 +259,89 @@
         });
       }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
       fadeEls.forEach(el => obs.observe(el));
+    });
+
+    // ─── Lightbox Gallery ───
+    document.addEventListener('DOMContentLoaded', () => {
+      const galleryItems = document.querySelectorAll('.tour-gallery__item');
+      if (galleryItems.length === 0) return;
+
+      // Create lightbox DOM
+      const lightbox = document.createElement('div');
+      lightbox.className = 'lightbox';
+      lightbox.innerHTML = `
+          <div class="lightbox__overlay"></div>
+          <div class="lightbox__content">
+              <button class="lightbox__close" aria-label="Cerrar"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+              <div class="lightbox__image-wrapper">
+                  <img src="" alt="" class="lightbox__image">
+              </div>
+              <button class="lightbox__nav lightbox__nav--prev" aria-label="Anterior"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+              <button class="lightbox__nav lightbox__nav--next" aria-label="Siguiente"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+          </div>
+      `;
+      document.body.appendChild(lightbox);
+
+      const imgEls = Array.from(galleryItems).map(item => item.querySelector('img')).filter(img => img);
+      const lbOverlay = lightbox.querySelector('.lightbox__overlay');
+      const lbClose = lightbox.querySelector('.lightbox__close');
+      const lbPrev = lightbox.querySelector('.lightbox__nav--prev');
+      const lbNext = lightbox.querySelector('.lightbox__nav--next');
+      const lbImage = lightbox.querySelector('.lightbox__image');
+      let currentIndex = 0;
+
+      const openLightbox = (index) => {
+        currentIndex = index;
+        updateImage();
+        lightbox.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+      };
+
+      const closeLightbox = () => {
+        lightbox.classList.remove('is-open');
+        document.body.style.overflow = '';
+      };
+
+      const updateImage = () => {
+        lbImage.src = imgEls[currentIndex].src;
+        lbImage.alt = imgEls[currentIndex].alt;
+      };
+
+      const showNext = () => {
+        currentIndex = (currentIndex + 1) % imgEls.length;
+        updateImage();
+      };
+
+      const showPrev = () => {
+        currentIndex = (currentIndex - 1 + imgEls.length) % imgEls.length;
+        updateImage();
+      };
+
+      imgEls.forEach((img, i) => {
+        img.addEventListener('click', () => openLightbox(i));
+      });
+
+      lbOverlay.addEventListener('click', closeLightbox);
+      lbClose.addEventListener('click', closeLightbox);
+      lbNext.addEventListener('click', showNext);
+      lbPrev.addEventListener('click', showPrev);
+
+      // Swipe navigation
+      let touchStartX = 0;
+      let touchEndX = 0;
+      lightbox.addEventListener('touchstart', e => touchStartX = e.changedTouches[0].screenX, { passive: true });
+      lightbox.addEventListener('touchend', e => {
+        touchEndX = e.changedTouches[0].screenX;
+        const diff = touchStartX - touchEndX;
+        if (Math.abs(diff) > 50) diff > 0 ? showNext() : showPrev();
+      }, { passive: true });
+
+      document.addEventListener('keydown', e => {
+        if (!lightbox.classList.contains('is-open')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowRight') showNext();
+        if (e.key === 'ArrowLeft') showPrev();
+      });
     });
   </script>
 </body>

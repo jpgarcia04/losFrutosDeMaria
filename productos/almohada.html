@@ -266,21 +266,8 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
-    const toggle = document.getElementById('nav-toggle');
-    const nav = document.getElementById('main-nav');
-    toggle.addEventListener('click', () => {
-      const isOpen = nav.classList.toggle('nav--open');
-      toggle.setAttribute('aria-expanded', isOpen);
-      toggle.classList.toggle('nav-toggle--open', isOpen);
-    });
-    nav.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        nav.classList.remove('nav--open');
-        toggle.setAttribute('aria-expanded', 'false');
-        toggle.classList.remove('nav-toggle--open');
-      });
-    });
   </script>
+  <script src="../js/hamburger.js" defer></script>
   <script src="../js/product-page.js" defer></script>
 </body>
 

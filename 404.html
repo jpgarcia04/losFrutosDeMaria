@@ -1,0 +1,140 @@
+<!-- 404.html -->
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="Página no encontrada — Los Frutos de María: experiencias y productos a base de CBD para reducir el estrés y recuperar la calma." />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Página no encontrada · Los Frutos de María</title>
+
+  <!-- Tipografías (EB Garamond + Mulish) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&family=Mulish:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Asegura que todas las rutas relativas se resuelvan desde la raíz del sitio -->
+  <base href="/">
+
+  <!-- Rutas relativas al sitio (funcionan gracias a <base>) -->
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/404.css" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/webp" href="images/favicon.webp" />
+  <link rel="apple-touch-icon" href="images/favicon.webp" />
+</head>
+
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Los Frutos de María, inicio">
+        <span class="brand-mark" aria-hidden="true">
+          <img src="images/logo.webp" alt="logo de los frutos de maria">
+        </span>
+        <span class="brand-text">
+          <span class="brand-name">LOS FRUTOS DE MARÍA</span>
+          <span class="brand-tagline">Stress free • Salud • Alimentación • Lifestyle • Descanso</span>
+        </span>
+      </a>
+
+      <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="main-nav" id="nav-toggle">
+        <span class="nav-toggle__line"></span>
+        <span class="nav-toggle__line"></span>
+        <span class="nav-toggle__line"></span>
+      </button>
+
+      <nav class="nav" id="main-nav" aria-label="Navegación principal">
+        <a href="index.html">Inicio</a>
+        <a href="index.html#productos">Productos</a>
+        <a href="index.html#contacto">Contáctanos</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="page-404" id="contenido">
+    <div class="blob-bg" aria-hidden="true"></div>
+
+    <div class="error-content">
+
+      <!-- Logo flotante -->
+      <div class="error-logo" aria-hidden="true">
+        <img src="images/logo.webp" alt="Los Frutos de María">
+      </div>
+
+      <!-- Etiqueta -->
+      <span class="error-eyebrow">Error 404</span>
+
+      <!-- Número grande -->
+      <p class="error-code" aria-hidden="true">404</p>
+
+      <!-- Divider -->
+      <div class="error-divider" aria-hidden="true"></div>
+
+      <!-- Título y mensaje -->
+      <h1 class="error-title">Esta página no existe&nbsp;🌿</h1>
+
+      <p class="error-message">
+        Parece que la ruta que buscas no existe.
+        No te preocupes, desde aquí puedes volver al camino correcto.
+      </p>
+
+      <!-- Botones principales -->
+      <div class="error-actions">
+        <a href="index.html" class="btn" id="btn-inicio">Volver al inicio</a>
+        <a href="index.html#productos" class="btn btn--outline" id="btn-productos">Ver productos</a>
+      </div>
+
+      <!-- Links rápidos -->
+      <div class="quick-links">
+        <p class="quick-links-label">¿Buscabas alguno de estos?</p>
+        <div class="quick-links-grid">
+          <a href="productos/gotas.html" class="quick-link" id="ql-gotas">
+            <span class="quick-link__icon">💧</span> Gotas LFDM
+          </a>
+          <a href="productos/crema-facial.html" class="quick-link" id="ql-crema">
+            <span class="quick-link__icon">🌸</span> Crema Facial
+          </a>
+          <a href="productos/pomada.html" class="quick-link" id="ql-pomada">
+            <span class="quick-link__icon">🌿</span> Pomada
+          </a>
+          <a href="cabania.html" class="quick-link" id="ql-cabania">
+            <span class="quick-link__icon">🏡</span> La Cabaña
+          </a>
+          <a href="index.html#contacto" class="quick-link" id="ql-contacto">
+            <span class="quick-link__icon">📩</span> Contáctanos
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Los Frutos de María. Todos los derechos reservados.</p>
+      <div class="footer-links">
+        <a href="index.html">Inicio</a>
+        <a href="index.html#experiencias">Experiencias</a>
+        <a href="index.html#productos">Productos</a>
+        <a href="index.html#contacto">Contacto</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+  <script src="js/hamburger.js" defer></script>
+</body>
+
+</html>

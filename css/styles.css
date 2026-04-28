@@ -352,9 +352,6 @@ p {
 /* =========================================
    5. HERO (Inicio)
    ========================================= */
-/* =========================================
-   5. HERO (Inicio)
-   ========================================= */
 .hero {
   position: relative;
   min-height: 80vh;
@@ -362,7 +359,7 @@ p {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  border-bottom: 1px solid var(--stroke);
+  border-bottom: none;
 }
 
 .hero-inner {
@@ -1037,20 +1034,22 @@ p {
    ========================================= */
 .needs-section {
   padding: 64px 0 80px;
+  border-bottom: 1px solid var(--stroke);
 }
+
 
 .needs-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 16px;
-  margin-top: 32px;
+  gap: 24px;
+  margin-top: 40px;
 }
 
 .need-card {
   background: var(--card-bg);
   border: 1px solid var(--stroke);
   border-radius: var(--radius);
-  padding: 28px 16px 24px;
+  padding: 36px 28px 32px;
   text-align: center;
   transition: all 0.3s ease;
   text-decoration: none;
@@ -1058,7 +1057,7 @@ p {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 16px;
 }
 
 .need-card:hover {
@@ -1069,13 +1068,13 @@ p {
 }
 
 .need-card__icon {
-  width: 56px;
-  height: 56px;
-  border-radius: 16px;
+  width: 72px;
+  height: 72px;
+  border-radius: 18px;
   display: grid;
   place-items: center;
   background: var(--olive-light);
-  font-size: 26px;
+  font-size: 38px;
   transition: transform 0.3s ease;
 }
 
@@ -1102,16 +1101,19 @@ p {
 @media (max-width: 900px) {
   .needs-grid {
     grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
   }
 }
 
 @media (max-width: 600px) {
   .needs-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
   }
 
   .need-card {
-    padding: 20px 12px 18px;
+    padding: 28px 16px 24px;
+    gap: 12px;
   }
 
   /* Centrar el quinto elemento */
@@ -1122,9 +1124,9 @@ p {
   }
 
   .need-card__icon {
-    width: 48px;
-    height: 48px;
-    font-size: 22px;
+    width: 60px;
+    height: 60px;
+    font-size: 30px;
   }
 
   .need-card__title {
@@ -1192,6 +1194,17 @@ p {
   font-size: 20px;
 }
 
+.trust-bar__item:hover {
+  color: var(--ink);
+}
+
+.trust-bar__item:hover img,
+.trust-bar__item:hover svg,
+.trust-bar__item:hover i {
+  filter: grayscale(0%) opacity(1);
+  opacity: 1;
+}
+
 /* =========================================
    WHATSAPP FLOATING BUTTON
    ========================================= */
@@ -1236,10 +1249,31 @@ p {
     animation: wa-expand-collapse 5s ease-in-out forwards;
   }
 
+  /* Evitar animación automática en la home */
+  body.home-page .whatsapp-float {
+    animation: none;
+  }
+
+  /* Disparar animación en home por scroll */
+  body.home-page .whatsapp-float.wa-trigger {
+    animation: wa-expand-collapse 5s ease-in-out forwards;
+  }
+
   .whatsapp-float__text {
     display: inline-block;
     overflow: hidden;
     white-space: nowrap;
+    animation: wa-text-expand-collapse 5s ease-in-out forwards;
+  }
+
+  body.home-page .whatsapp-float__text {
+    animation: none;
+    max-width: 0;
+    opacity: 0;
+    margin-left: 0;
+  }
+
+  body.home-page .whatsapp-float.wa-trigger .whatsapp-float__text {
     animation: wa-text-expand-collapse 5s ease-in-out forwards;
   }
 }

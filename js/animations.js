@@ -21,4 +21,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Observe each element
     animatedElements.forEach(el => observer.observe(el));
+
+    // WhatsApp float trigger observer for home page
+    const whatsappFloat = document.getElementById('whatsapp-float');
+    const bienestarSection = document.getElementById('bienestar');
+    
+    if (whatsappFloat && bienestarSection && document.body.classList.contains('home-page')) {
+        const waObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    whatsappFloat.classList.add('wa-trigger');
+                    waObserver.disconnect(); // Only animate once
+                }
+            });
+        }, {
+            threshold: 0.2 // Trigger when 20% of section is visible
+        });
+        
+        waObserver.observe(bienestarSection);
+    }
 });

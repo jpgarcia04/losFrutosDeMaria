@@ -16,13 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const originalCards = Array.from(track.querySelectorAll('.product-card'));
     const totalOriginal = originalCards.length;
 
-    // ─── Desktop start index ───
-    // On desktop (≥1024 px) the carousel opens on the protector solar card.
-    // On mobile it opens on the first card (gotas).
-    const desktopStartId = 'card-protector-solar';
-    const desktopStartIndex = originalCards.findIndex(c => c.id === desktopStartId);
-    const getStartIndex = () =>
-        (window.innerWidth >= 1024 && desktopStartIndex !== -1) ? desktopStartIndex : 0;
+    // ─── Start index ───
+    // The carousel opens on the first card.
+    const getStartIndex = () => 0;
     if (totalOriginal === 0) return;
 
     // ─── Clone cards for infinite illusion ───

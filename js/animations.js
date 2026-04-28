@@ -40,4 +40,17 @@ document.addEventListener('DOMContentLoaded', () => {
         
         waObserver.observe(bienestarSection);
     }
+    // Dynamic Hero Background
+    const dynamicHeroBg = document.getElementById('dynamic-hero-bg');
+    if (dynamicHeroBg) {
+        const heroImages = [
+            'images/hero/hero1.png',
+            'images/hero/hero2.png',
+            'images/hero/hero3.png'
+        ];
+        // Select a random image from the pool
+        const randomImage = heroImages[Math.floor(Math.random() * heroImages.length)];
+        // Set it as background
+        dynamicHeroBg.style.backgroundImage = `url('${randomImage}')`;
+    }
 });

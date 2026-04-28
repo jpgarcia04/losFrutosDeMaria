@@ -1031,3 +1031,259 @@ p {
     grid-template-columns: 1fr;
   }
 }
+
+/* =========================================
+   NEEDS SECTION (Encuentra tu bienestar)
+   ========================================= */
+.needs-section {
+  padding: 64px 0 80px;
+}
+
+.needs-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.need-card {
+  background: var(--card-bg);
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius);
+  padding: 28px 16px 24px;
+  text-align: center;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.need-card:hover {
+  background: #fff;
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-soft);
+  border-color: var(--terracotta);
+}
+
+.need-card__icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  background: var(--olive-light);
+  font-size: 26px;
+  transition: transform 0.3s ease;
+}
+
+.need-card:hover .need-card__icon {
+  transform: scale(1.1);
+}
+
+.need-card__title {
+  font-family: var(--serif);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.need-card__desc {
+  font-size: 13px;
+  color: var(--muted);
+  margin: 0;
+  line-height: 1.4;
+}
+
+@media (max-width: 900px) {
+  .needs-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .needs-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .need-card {
+    padding: 20px 12px 18px;
+  }
+
+  /* Centrar el quinto elemento */
+  .need-card:last-child {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: calc(50% - 8px);
+  }
+
+  .need-card__icon {
+    width: 48px;
+    height: 48px;
+    font-size: 22px;
+  }
+
+  .need-card__title {
+    font-size: 15px;
+  }
+}
+
+/* =========================================
+   TRUST BAR
+   ========================================= */
+.trust-bar {
+  padding: 28px 0;
+  text-align: center;
+  border-top: 1px solid var(--stroke);
+  border-bottom: 1px solid var(--stroke);
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.trust-bar__label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  color: var(--muted);
+  margin-bottom: 18px;
+  display: block;
+}
+
+.trust-bar__logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 36px;
+  flex-wrap: wrap;
+}
+
+.trust-bar__item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--muted);
+  transition: all 0.3s ease;
+}
+
+.trust-bar__item img {
+  height: 24px;
+  width: auto;
+  object-fit: contain;
+  filter: grayscale(100%) opacity(0.8);
+}
+
+.trust-bar__item img[alt="Suburbia"] {
+  filter: grayscale(100%) opacity(0.5);
+}
+
+.trust-bar__item svg,
+.trust-bar__item i {
+  opacity: 0.8;
+  filter: grayscale(100%);
+}
+
+.trust-bar__item i {
+  font-size: 20px;
+}
+
+/* =========================================
+   WHATSAPP FLOATING BUTTON
+   ========================================= */
+.whatsapp-float {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background: #25D366;
+  color: #fff;
+  padding: 14px 22px;
+  border-radius: 100px;
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.whatsapp-float:hover {
+  background: #20bd5a;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(37, 211, 102, 0.45);
+  color: #fff;
+}
+
+.whatsapp-float__text {
+  white-space: nowrap;
+  margin-left: 10px;
+}
+
+@media (max-width: 600px) {
+  .whatsapp-float {
+    bottom: 20px;
+    right: 20px;
+    padding: 14px;
+    overflow: hidden;
+    animation: wa-expand-collapse 5s ease-in-out forwards;
+  }
+
+  .whatsapp-float__text {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    animation: wa-text-expand-collapse 5s ease-in-out forwards;
+  }
+}
+
+@keyframes wa-expand-collapse {
+  0% {
+    padding: 14px;
+  }
+
+  10% {
+    padding: 14px 22px;
+  }
+
+  80% {
+    padding: 14px 22px;
+  }
+
+  100% {
+    padding: 14px;
+  }
+}
+
+@keyframes wa-text-expand-collapse {
+  0% {
+    max-width: 0;
+    opacity: 0;
+    margin-left: 0;
+  }
+
+  10% {
+    max-width: 200px;
+    opacity: 1;
+    margin-left: 10px;
+  }
+
+  80% {
+    max-width: 200px;
+    opacity: 1;
+    margin-left: 10px;
+  }
+
+  100% {
+    max-width: 0;
+    opacity: 0;
+    margin-left: 0;
+  }
+}

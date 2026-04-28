@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
             variantPanels.forEach(p => p.classList.remove('is-active'));
             document.querySelectorAll('.link-panel').forEach(p => p.classList.remove('is-active'));
 
-            tab.classList.add('is-active');
+            document.querySelectorAll(`.variant-tab[data-variant="${target}"]`).forEach(t => t.classList.add('is-active'));
             const panel = document.getElementById(target);
             if (panel) panel.classList.add('is-active');
             

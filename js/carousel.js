@@ -18,7 +18,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ─── Start index ───
     // The carousel opens on the first card.
-    const getStartIndex = () => 0;
+    const getStartIndex = () => {
+        if (window.innerWidth >= 1024) {
+            const startIndex = originalCards.findIndex(c => c.id === 'card-desinfectante');
+            return startIndex > -1 ? startIndex : 0;
+        }
+        return 0;
+    };
     if (totalOriginal === 0) return;
 
     // ─── Clone cards for infinite illusion ───

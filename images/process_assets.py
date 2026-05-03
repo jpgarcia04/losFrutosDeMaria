@@ -9,8 +9,7 @@ except ImportError:
 
 from moviepy import VideoFileClip
 
-dirs = ['images', 'images/productos']
-
+dirs = ['images', 'images/productos', 'images/hero']
 for directory in dirs:
     if not os.path.exists(directory):
         continue

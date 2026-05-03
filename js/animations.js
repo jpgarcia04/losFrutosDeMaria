@@ -44,9 +44,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const dynamicHeroBg = document.getElementById('dynamic-hero-bg');
     if (dynamicHeroBg) {
         const heroImages = [
-            'images/hero/hero1.png',
-            'images/hero/hero2.png',
-            'images/hero/hero3.png'
+            'images/hero/hero1.webp',
+            'images/hero/hero2.webp',
+            'images/hero/hero3.webp',
+            'images/hero/hero4.webp',
+            'images/hero/hero5.webp',
+            'images/hero/hero6.webp',
+            'images/hero/hero7.webp',
+            'images/hero/hero8.webp'
         ];
         // Select a random image from the pool
         const randomImage = heroImages[Math.floor(Math.random() * heroImages.length)];

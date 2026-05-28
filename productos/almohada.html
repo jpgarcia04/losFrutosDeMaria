@@ -17,6 +17,7 @@
 
   <link rel="stylesheet" href="../css/styles.css" />
   <link rel="stylesheet" href="../css/productos.css" />
+  <link rel="stylesheet" href="../css/cart.css" />
 
   <!-- Favicon -->
   <link rel="icon" type="image/webp" href="../images/favicon.webp" />
@@ -66,7 +67,13 @@
           <h1 class="product-hero__title">Almohada Terapéutica</h1>
           <p class="product-hero__subtitle">Relajación profunda con el poder de la naturaleza. Una almohada ergonómica rellena de semillas y lavanda, diseñada para aliviar tensiones y mejorar tu descanso.</p>
           <div class="product-buy-options" style="margin-top: 32px; display: flex; flex-direction: column; align-items: center;">
-            <p style="font-weight: 600; margin-bottom: 12px; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted);">Dónde comprar:</p>
+            
+          <button class="btn-add-to-cart" data-product-id="4" style="margin-bottom: 20px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            Agregar al carrito — $399
+          </button>
+
+            <p style="font-weight: 600; margin-bottom: 12px; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted);">Otros puntos de venta:</p>
             <div class="store-links" style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 12px; justify-content: center; width: 100%; max-width: 500px; margin: 0 auto;">
               <a href="https://www.amazon.com.mx/LOS-FRUTOS-MARIA-CBD-Terap%C3%A9utica/dp/B0DHF48STH/ref=ast_sto_dp_puis?ufe=app_do%3Aamzn1.fos.de93fa6a-174c-4df7-be7c-5bc8e9c5a71b" target="_blank" rel="noopener" class="store-card" style="background: var(--card-bg); padding: 10px 16px; justify-content: center; flex: 1; min-width: 140px; box-shadow: none;">
                 <span class="store-name" style="display: flex; align-items: center; gap: 12px;">
@@ -85,8 +92,7 @@
                   <img src="../images/suburbia.webp" alt="Logo de Suburbia" style="height: 32px; width: auto; object-fit: contain;" />
                   Suburbia
                 </span>
-              </a>
-            </div>
+              </a></div>
           </div>
         </div>
       </div>
@@ -232,7 +238,15 @@
     <section class="product-cta product-fade-in">
       <h2 class="product-cta__heading">Tu descanso merece lo mejor</h2>
       <p class="product-cta__text">Encuentra la Almohada Terapéutica de Los Frutos de María y recupera tu calma física.</p>
-      <div class="product-buy-options" style="margin-top: 24px; margin-inline: auto; max-width: 500px;">
+      <div class="product-buy-options" style="margin-top: 24px; margin-inline: auto; max-width: 500px; display: flex; flex-direction: column; align-items: center;">
+        
+            
+          <button class="btn-add-to-cart" data-product-id="4" style="margin-bottom: 20px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            Agregar al carrito — $399
+          </button>
+
+          <p style="font-weight: 600; margin-bottom: 12px; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted);">Otros puntos de venta:</p>
         <div class="store-links" style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 12px; justify-content: center; width: 100%; max-width: 500px; margin: 0 auto;">
           <a href="https://www.amazon.com.mx/LOS-FRUTOS-MARIA-CBD-Terap%C3%A9utica/dp/B0DHF48STH/ref=ast_sto_dp_puis?ufe=app_do%3Aamzn1.fos.de93fa6a-174c-4df7-be7c-5bc8e9c5a71b" target="_blank" rel="noopener" class="store-card" style="background: var(--card-bg); padding: 10px 16px; justify-content: center; flex: 1; min-width: 140px; box-shadow: none;">
             <span class="store-name" style="display: flex; align-items: center; gap: 12px;">
@@ -282,6 +296,8 @@
   </script>
   <script src="../js/hamburger.js" defer></script>
   <script src="../js/product-page.js" defer></script>
+  <script src="../js/cart.js"></script>
+  <script src="../js/cart-ui.js"></script>
 </body>
 
 </html>

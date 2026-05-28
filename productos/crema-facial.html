@@ -1,4 +1,4 @@
-﻿<!-- crema-facial.html -->
+<!-- crema-facial.html -->
 <!doctype html>
 <html lang="es">
 
@@ -17,6 +17,7 @@
 
   <link rel="stylesheet" href="../css/styles.css" />
   <link rel="stylesheet" href="../css/productos.css" />
+  <link rel="stylesheet" href="../css/cart.css" />
 
   <!-- Favicon -->
   <link rel="icon" type="image/webp" href="../images/favicon.webp" />
@@ -66,7 +67,12 @@
         <h1 class="product-hero__title">Crema Facial Nocturna</h1>
         <p class="product-hero__subtitle">Skincare que se siente como descanso. Ritual nocturno premium para hidratar, restaurar y acompañar tu piel en modo recuperación.</p>
                 <div class="product-buy-options" style="margin-top: 32px; display: flex; flex-direction: column; align-items: center;">
-          <p style="font-weight: 600; margin-bottom: 12px; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted);">Dónde comprar:</p>
+          <button class="btn-add-to-cart" data-product-id="2" style="margin-bottom: 20px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            Agregar al carrito — $499
+          </button>
+
+          <p style="font-weight: 600; margin-bottom: 12px; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted);">Otros puntos de venta:</p>
           <div class="store-links" style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 12px; justify-content: center; width: 100%; max-width: 500px; margin: 0 auto;">
           <a href="https://www.amazon.com.mx/LOS-FRUTOS-MARIA-CBD-Nocturna/dp/B0DH9MFVFX?ref_=ast_sto_dp" target="_blank" rel="noopener" class="store-card" style="background: var(--card-bg); padding: 10px 16px; justify-content: center; flex: 1; min-width: 140px; box-shadow: none;">
             <span class="store-name" style="display: flex; align-items: center; gap: 12px;">
@@ -88,8 +94,7 @@
               Suburbia
             </span>
             
-          </a>
-          </div>
+          </a>          </div>
         </div>
         </div>
       </div>
@@ -227,7 +232,14 @@
     <section class="product-cta product-fade-in">
       <h2 class="product-cta__heading">Tu piel merece un ritual</h2>
       <p class="product-cta__text">Encuentra la Crema Facial Nocturna LFDM en nuestros puntos de venta.</p>
-            <div class="product-buy-options" style="margin-top: 24px; margin-inline: auto; max-width: 500px;">
+            <div class="product-buy-options" style="margin-top: 24px; margin-inline: auto; max-width: 500px; display: flex; flex-direction: column; align-items: center;">
+        
+          <button class="btn-add-to-cart" data-product-id="2" style="margin-bottom: 20px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            Agregar al carrito — $499
+          </button>
+
+          <p style="font-weight: 600; margin-bottom: 12px; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted);">Otros puntos de venta:</p>
         <div class="store-links" style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 12px; justify-content: center; width: 100%; max-width: 500px; margin: 0 auto;">
           <a href="https://www.amazon.com.mx/LOS-FRUTOS-MARIA-CBD-Nocturna/dp/B0DH9MFVFX?ref_=ast_sto_dp" target="_blank" rel="noopener" class="store-card" style="background: var(--card-bg); padding: 10px 16px; justify-content: center; flex: 1; min-width: 140px; box-shadow: none;">
             <span class="store-name" style="display: flex; align-items: center; gap: 12px;">
@@ -280,6 +292,8 @@
   </script>
   <script src="../js/hamburger.js" defer></script>
   <script src="../js/product-page.js" defer></script>
+  <script src="../js/cart.js"></script>
+  <script src="../js/cart-ui.js"></script>
 </body>
 
 </html>

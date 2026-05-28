@@ -31,7 +31,7 @@
   --shadow-hover: 0 18px 34px rgba(244, 114, 60, 0.15);
 
   /* Dimensiones y Tipografías */
-  --container-width: 1120px;
+  --container-width: 1250px;
   --header-height: 120px;
   --radius: 18px;
   --radius-lg: 26px;
@@ -973,6 +973,20 @@ p {
     display: none;
   }
 
+  .nav .cart-toggle {
+    width: 100%;
+    padding: 14px 24px;
+    justify-content: flex-start;
+    border-radius: 0;
+    border-bottom: 1px solid var(--stroke);
+  }
+
+  .nav .cart-toggle__badge {
+    right: auto;
+    left: 40px;
+    top: 6px;
+  }
+
   /* 4. WhatsApp contact: nombre y número en líneas separadas */
   .whatsapp-contact {
     display: flex;
@@ -1058,15 +1072,14 @@ p {
   background: var(--card-bg);
   border: 1px solid var(--stroke);
   border-radius: var(--radius);
-  padding: 36px 28px 32px;
+  padding: 0;
   text-align: center;
   transition: all 0.3s ease;
   text-decoration: none;
   color: inherit;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 16px;
+  overflow: hidden;
 }
 
 .need-card:hover {
@@ -1076,24 +1089,35 @@ p {
   border-color: var(--terracotta);
 }
 
-.need-card__icon {
-  width: 72px;
-  height: 72px;
-  border-radius: 18px;
-  display: grid;
-  place-items: center;
-  background: var(--olive-light);
-  font-size: 38px;
-  transition: transform 0.3s ease;
+.need-card__image-wrapper {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
 }
 
-.need-card:hover .need-card__icon {
-  transform: scale(1.1);
+.need-card__image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.need-card:hover .need-card__image-wrapper img {
+  transform: scale(1.05);
+}
+
+.need-card__content {
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  flex-grow: 1;
 }
 
 .need-card__title {
   font-family: var(--serif);
-  font-size: 17px;
+  font-size: 20px;
   font-weight: 600;
   color: var(--ink);
   margin: 0;
@@ -1101,7 +1125,7 @@ p {
 }
 
 .need-card__desc {
-  font-size: 13px;
+  font-size: 15px;
   color: var(--muted);
   margin: 0;
   line-height: 1.4;
@@ -1121,8 +1145,12 @@ p {
   }
 
   .need-card {
-    padding: 28px 16px 24px;
-    gap: 12px;
+    padding: 0;
+  }
+
+  .need-card__content {
+    padding: 20px 16px;
+    gap: 10px;
   }
 
   /* Centrar el quinto elemento */
@@ -1132,14 +1160,12 @@ p {
     width: calc(50% - 8px);
   }
 
-  .need-card__icon {
-    width: 60px;
-    height: 60px;
-    font-size: 30px;
+  .need-card__title {
+    font-size: 18px;
   }
 
-  .need-card__title {
-    font-size: 15px;
+  .need-card__desc {
+    font-size: 14px;
   }
 }
 

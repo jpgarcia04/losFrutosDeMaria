@@ -1,3 +1,12 @@
+/**
+ * Script específico para las páginas de productos individuales.
+ * 
+ * Este archivo agrupa las funcionalidades principales de la vista de producto:
+ * - Acordeón para Preguntas Frecuentes (FAQ).
+ * - Pestañas (tabs) para las variantes de productos (ej. gotas).
+ * - Animaciones de entrada por scroll.
+ * - Galería de imágenes estilo Lightbox integrada a la vista de producto.
+ */
 document.addEventListener('DOMContentLoaded', () => {
 
     // ─── FAQ Accordion ───
@@ -149,3 +158,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+window.toggleGotasSize = function(size) {
+    document.querySelectorAll('.gotas-size-group').forEach(el => el.style.display = 'none');
+    document.querySelectorAll('.gotas-size-group.size-' + size).forEach(el => el.style.display = 'flex');
+    document.querySelectorAll('.gotas-size-select').forEach(el => el.value = size);
+};

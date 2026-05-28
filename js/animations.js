@@ -1,3 +1,12 @@
+/**
+ * Maneja las animaciones generales del sitio web basadas en el scroll.
+ * 
+ * Este script utiliza IntersectionObserver para detectar cuándo los elementos
+ * con la clase '.animate-on-scroll' o secciones específicas entran en el 
+ * viewport y les aplica la clase '.is-visible' para desencadenar animaciones CSS.
+ * También controla la aparición del botón flotante de WhatsApp y la imagen 
+ * de fondo dinámica de la sección hero.
+ */
 document.addEventListener('DOMContentLoaded', () => {
     // Select all elements to animate
     const animatedElements = document.querySelectorAll('.animate-on-scroll');

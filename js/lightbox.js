@@ -1,3 +1,10 @@
+/**
+ * Inicializa la funcionalidad de galería Lightbox.
+ * 
+ * Crea y gestiona el DOM del lightbox de forma dinámica para mostrar imágenes 
+ * ampliadas. Soporta navegación mediante botones, eventos táctiles (swipe)
+ * para dispositivos móviles y teclado (flechas y Escape).
+ */
 // ─── Lightbox Gallery ───
 document.addEventListener('DOMContentLoaded', () => {
   const galleryItems = document.querySelectorAll('.tour-gallery__item');

@@ -1,0 +1,323 @@
+<!-- checkout.html -->
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Checkout | Los Frutos de María</title>
+  <meta name="description"
+    content="Completa tu compra en Los Frutos de María. Pago seguro con tarjeta de crédito o débito." />
+
+  <!-- Tipografías -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&family=Mulish:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/cart.css" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/webp" href="images/favicon.webp" />
+  <link rel="apple-touch-icon" href="images/favicon.webp" />
+
+  <!-- EcartPay SDK (Sandbox) -->
+  <script src="https://sandbox.ecartpay.com/sdk/pay.js" defer></script>
+</head>
+
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Los Frutos de María, inicio">
+        <span class="brand-mark" aria-hidden="true">
+          <img src="images/logo.webp" alt="logo de los frutos de maria">
+        </span>
+        <span class="brand-text">
+          <span class="brand-name">LOS FRUTOS DE MARÍA</span>
+          <span class="brand-tagline">Stress free • Salud • Alimentación • Lifestyle • Descanso</span>
+        </span>
+      </a>
+
+      <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="main-nav"
+        id="nav-toggle">
+        <span class="nav-toggle__line"></span>
+        <span class="nav-toggle__line"></span>
+        <span class="nav-toggle__line"></span>
+      </button>
+
+      <nav class="nav" id="main-nav" aria-label="Navegación principal">
+        <a href="index.html">Inicio</a>
+        <a href="index.html#productos">Productos</a>
+        <a href="index.html#contacto">Contáctanos</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!--  CHECKOUT FORM CONTAINER                               -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <div id="checkout-form-container" class="checkout-page">
+      <div class="container">
+
+        <!-- Breadcrumb -->
+        <nav class="checkout-breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Inicio</a>
+          <span class="checkout-breadcrumb__sep">›</span>
+          <a href="index.html#productos">Productos</a>
+          <span class="checkout-breadcrumb__sep">›</span>
+          <span class="checkout-breadcrumb__current">Checkout</span>
+        </nav>
+
+        <h1 class="checkout-heading">Finalizar compra</h1>
+
+        <!-- Error global -->
+        <div id="checkout-error" class="checkout-error" style="display: none;" role="alert"></div>
+
+        <div class="checkout-grid">
+
+          <!-- ── Columna izquierda: Formulario ─────────────── -->
+          <div class="checkout-col-form">
+            <form id="checkout-form" novalidate>
+
+              <!-- Datos del cliente -->
+              <div class="checkout-panel">
+                <h2 class="checkout-section-title">
+                  <span class="checkout-section-icon">👤</span>
+                  Datos de contacto
+                </h2>
+
+                <div class="checkout-field">
+                  <label for="customer-name">Nombre completo *</label>
+                  <input type="text" id="customer-name" name="customer-name" required autocomplete="name"
+                    placeholder="Ej. María García López" />
+                </div>
+
+                <div class="checkout-row">
+                  <div class="checkout-field">
+                    <label for="customer-email">Correo electrónico *</label>
+                    <input type="email" id="customer-email" name="customer-email" required autocomplete="email"
+                      placeholder="correo@ejemplo.com" />
+                  </div>
+                  <div class="checkout-field">
+                    <label for="customer-phone">Teléfono (10 dígitos) *</label>
+                    <input type="tel" id="customer-phone" name="customer-phone" required autocomplete="tel"
+                      pattern="[0-9]{10}" maxlength="10" inputmode="numeric" placeholder="5512345678" />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Dirección de envío -->
+              <div class="checkout-panel">
+                <h2 class="checkout-section-title">
+                  <span class="checkout-section-icon">📦</span>
+                  Dirección de envío
+                </h2>
+
+                <div class="checkout-row">
+                  <div class="checkout-field checkout-field--wide">
+                    <label for="shipping-street">Calle *</label>
+                    <input type="text" id="shipping-street" name="shipping-street" required autocomplete="street-address"
+                      placeholder="Ej. Av. Reforma" />
+                  </div>
+                  <div class="checkout-field checkout-field--narrow">
+                    <label for="shipping-exterior">Núm. exterior *</label>
+                    <input type="text" id="shipping-exterior" name="shipping-exterior" required
+                      placeholder="222" />
+                  </div>
+                  <div class="checkout-field checkout-field--narrow">
+                    <label for="shipping-interior">Núm. interior</label>
+                    <input type="text" id="shipping-interior" name="shipping-interior"
+                      placeholder="4B" />
+                  </div>
+                </div>
+
+                <div class="checkout-row">
+                  <div class="checkout-field">
+                    <label for="shipping-neighborhood">Colonia *</label>
+                    <input type="text" id="shipping-neighborhood" name="shipping-neighborhood" required
+                      placeholder="Ej. Juárez" />
+                  </div>
+                  <div class="checkout-field">
+                    <label for="shipping-postal">Código Postal *</label>
+                    <input type="text" id="shipping-postal" name="shipping-postal" required
+                      pattern="[0-9]{5}" maxlength="5" inputmode="numeric" autocomplete="postal-code"
+                      placeholder="06600" />
+                  </div>
+                </div>
+
+                <div class="checkout-row">
+                  <div class="checkout-field">
+                    <label for="shipping-city">Ciudad *</label>
+                    <input type="text" id="shipping-city" name="shipping-city" required
+                      placeholder="Ej. Ciudad de México" />
+                  </div>
+                  <div class="checkout-field">
+                    <label for="shipping-state">Estado *</label>
+                    <select id="shipping-state" name="shipping-state" required>
+                      <option value="">Selecciona un estado</option>
+                      <option value="Aguascalientes">Aguascalientes</option>
+                      <option value="Baja California">Baja California</option>
+                      <option value="Baja California Sur">Baja California Sur</option>
+                      <option value="Campeche">Campeche</option>
+                      <option value="Chiapas">Chiapas</option>
+                      <option value="Chihuahua">Chihuahua</option>
+                      <option value="Ciudad de México">Ciudad de México</option>
+                      <option value="Coahuila">Coahuila</option>
+                      <option value="Colima">Colima</option>
+                      <option value="Durango">Durango</option>
+                      <option value="Estado de México">Estado de México</option>
+                      <option value="Guanajuato">Guanajuato</option>
+                      <option value="Guerrero">Guerrero</option>
+                      <option value="Hidalgo">Hidalgo</option>
+                      <option value="Jalisco">Jalisco</option>
+                      <option value="Michoacán">Michoacán</option>
+                      <option value="Morelos">Morelos</option>
+                      <option value="Nayarit">Nayarit</option>
+                      <option value="Nuevo León">Nuevo León</option>
+                      <option value="Oaxaca">Oaxaca</option>
+                      <option value="Puebla">Puebla</option>
+                      <option value="Querétaro">Querétaro</option>
+                      <option value="Quintana Roo">Quintana Roo</option>
+                      <option value="San Luis Potosí">San Luis Potosí</option>
+                      <option value="Sinaloa">Sinaloa</option>
+                      <option value="Sonora">Sonora</option>
+                      <option value="Tabasco">Tabasco</option>
+                      <option value="Tamaulipas">Tamaulipas</option>
+                      <option value="Tlaxcala">Tlaxcala</option>
+                      <option value="Veracruz">Veracruz</option>
+                      <option value="Yucatán">Yucatán</option>
+                      <option value="Zacatecas">Zacatecas</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="checkout-field">
+                  <label for="shipping-references">Referencias del domicilio</label>
+                  <input type="text" id="shipping-references" name="shipping-references"
+                    placeholder="Ej. Entre Calle A y Calle B, casa azul con portón negro" />
+                </div>
+              </div>
+
+              <!-- Nota de seguridad -->
+              <div class="checkout-security-note">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+                <span>Tu información está protegida. El pago se procesa de forma segura mediante EcartPay.</span>
+              </div>
+
+              <!-- Botón submit (oculto, el visible está en el resumen) -->
+              <button type="submit" style="display: none;" id="checkout-form-submit">Pagar</button>
+            </form>
+          </div>
+
+          <!-- ── Columna derecha: Resumen del pedido ──────── -->
+          <div class="checkout-col-summary">
+            <div class="checkout-panel checkout-summary" id="checkout-summary">
+              <h2 class="checkout-section-title">
+                <span class="checkout-section-icon">🛒</span>
+                Resumen del pedido
+              </h2>
+
+              <!-- Items dinámicos -->
+              <div id="checkout-summary-items" class="checkout-summary-items"></div>
+
+              <!-- Totales -->
+              <div class="checkout-summary-totals">
+                <div class="checkout-summary-line">
+                  <span>Subtotal</span>
+                  <span id="checkout-subtotal">$0.00</span>
+                </div>
+                <div class="checkout-summary-line">
+                  <span>Envío</span>
+                  <span id="checkout-shipping">$120.00</span>
+                </div>
+                <div class="checkout-summary-line checkout-summary-total">
+                  <span>Total</span>
+                  <span id="checkout-total">$0.00</span>
+                </div>
+              </div>
+
+              <!-- Botón de pago -->
+              <button type="button" id="checkout-pay-btn" class="checkout-pay-btn">
+                <span id="checkout-pay-btn-text" class="checkout-pay-btn__text">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                  </svg>
+                  Pagar $0.00
+                </span>
+                <span id="checkout-pay-btn-spinner" class="checkout-pay-btn__spinner" style="display: none;">
+                  <svg class="spinner-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2.5">
+                    <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"
+                      stroke-linecap="round" />
+                  </svg>
+                  Procesando…
+                </span>
+              </button>
+
+              <p class="checkout-summary-shipping-note">
+                Envío gratis a partir de $999 MXN
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!--  PANTALLA DE ÉXITO                                     -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <div id="checkout-success" class="checkout-success" style="display: none;">
+      <div class="checkout-success__inner">
+        <div class="checkout-success__icon">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--olive)" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+        </div>
+        <h2 class="checkout-success__title">¡Compra exitosa!</h2>
+        <p class="checkout-success__text">
+          Tu pedido ha sido procesado correctamente. Recibirás un correo de confirmación con los detalles de tu compra.
+        </p>
+        <p class="checkout-success__uid" id="success-order-uid"></p>
+        <a href="index.html" class="btn">Volver a la tienda</a>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Los Frutos de María. Todos los derechos reservados.</p>
+      <div class="footer-links">
+        <a href="index.html">Inicio</a>
+        <a href="index.html#productos">Productos</a>
+        <a href="index.html#contacto">Contacto</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+  <script src="js/hamburger.js" defer></script>
+  <script src="js/cart.js"></script>
+  <script src="js/cart-ui.js"></script>
+  <script src="js/checkout.js"></script>
+</body>
+
+</html>

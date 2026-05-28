@@ -1,4 +1,4 @@
-<!-- gotas.html -->
+﻿<!-- gotas.html -->
 <!doctype html>
 <html lang="es">
 
@@ -17,6 +17,7 @@
 
   <link rel="stylesheet" href="../css/styles.css" />
   <link rel="stylesheet" href="../css/productos.css" />
+  <link rel="stylesheet" href="../css/cart.css" />
 
   <!-- Favicon -->
   <link rel="icon" type="image/webp" href="../images/favicon.webp" />
@@ -76,48 +77,80 @@
           <button class="variant-tab is-active" data-variant="variant-300">Suplemento Alimenticio</button>
           <button class="variant-tab" data-variant="variant-1000">Isolated</button>
         </div>
-          <div class="variant-panel link-variant-300 is-active" style="width: 100%;">
-          <p style="font-weight: 600; margin-bottom: 12px; margin-top: 16px; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted);">Gotas 300 mg — Ideal para empezar:</p>
-          <div class="store-links" style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 12px; justify-content: center; width: 100%; max-width: 500px; margin: 0 auto;">
-          <a href="https://www.liverpool.com.mx/tienda/pdp/aceite-cbd-los-frutos-de-mar%C3%ADa/1177632577?skuid=1177632577" target="_blank" rel="noopener" class="store-card" style="background: var(--card-bg); padding: 10px 16px; justify-content: center; flex: 1; min-width: 140px; box-shadow: none;">
-            <span class="store-name" style="display: flex; align-items: center; gap: 12px;">
-              <img src="../images/liverpool.webp" alt="Logo de Liverpool" style="height: 32px; width: auto; object-fit: contain;" />
-              Liverpool
-            </span>
-          </a>
-          <a href="https://www.suburbia.com.mx/tienda/pdp/aceite-cbd-los-frutos-de-mar%C3%ADa/1177632577?skuid=1177632577" target="_blank" rel="noopener" class="store-card" style="background: var(--card-bg); padding: 10px 16px; justify-content: center; flex: 1; min-width: 140px; box-shadow: none;">
-            <span class="store-name" style="display: flex; align-items: center; gap: 12px;">
-              <img src="../images/suburbia.webp" alt="Logo de Suburbia" style="height: 32px; width: auto; object-fit: contain;" />
-              Suburbia
-            </span>
-          </a>
+
+        <!-- Panel Suplemento Alimenticio -->
+        <div class="variant-panel link-variant-300 is-active" style="width: 100%;">
+          <div style="margin-bottom: 24px; width: 100%; max-width: 320px; margin-inline: auto;">
+            <label for="gotas-size" style="display:block; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 8px;">Intensidad:</label>
+            <select class="gotas-size-select checkout-field" onchange="toggleGotasSize(this.value)" style="width: 100%; padding: 12px 16px; font-family: var(--sans); font-size: 15px; font-weight: 600; border-radius: 10px; border: 1px solid var(--stroke); background: #fff; cursor: pointer; color: var(--ink);">
+              <option value="300">Gotas 300 mg — Ideal para empezar</option>
+              <option value="500">Gotas 500 mg — Para uso continuo</option>
+            </select>
           </div>
-          <p style="font-weight: 600; margin-bottom: 12px; margin-top: 16px; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted);">Gotas 500 mg — Para uso más continuo:</p>
-          <div class="store-links" style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 12px; justify-content: center; width: 100%; max-width: 500px; margin: 0 auto;">
-          <a href="https://www.liverpool.com.mx/tienda/pdp/aceite-cbd-los-frutos-de-mar%C3%ADa/1177635835?skuid=1177635835" target="_blank" rel="noopener" class="store-card" style="background: var(--card-bg); padding: 10px 16px; justify-content: center; flex: 1; min-width: 140px; box-shadow: none;">
-            <span class="store-name" style="display: flex; align-items: center; gap: 12px;">
-              <img src="../images/liverpool.webp" alt="Logo de Liverpool" style="height: 32px; width: auto; object-fit: contain;" />
-              Liverpool
-            </span>
-          </a>
-          <a href="https://www.suburbia.com.mx/tienda/pdp/aceite-cbd-los-frutos-de-mar%C3%ADa/1177635835?skuid=1177635835" target="_blank" rel="noopener" class="store-card" style="background: var(--card-bg); padding: 10px 16px; justify-content: center; flex: 1; min-width: 140px; box-shadow: none;">
-            <span class="store-name" style="display: flex; align-items: center; gap: 12px;">
-              <img src="../images/suburbia.webp" alt="Logo de Suburbia" style="height: 32px; width: auto; object-fit: contain;" />
-              Suburbia
-            </span>
-          </a>
+
+          <!-- Variante 300 mg -->
+          <div class="gotas-size-group size-300" style="display: flex; flex-direction: column; align-items: center; width: 100%;">
+            <button class="btn-add-to-cart" data-product-id="10" style="margin-bottom: 20px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+              Agregar al carrito — $399
+            </button>
+            <p style="font-weight: 600; margin-bottom: 12px; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted);">Otros puntos de venta:</p>
+            <div class="store-links" style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 12px; justify-content: center; width: 100%; max-width: 500px; margin: 0 auto;">
+              <a href="https://www.liverpool.com.mx/tienda/pdp/aceite-cbd-los-frutos-de-mar%C3%ADa/1177632577?skuid=1177632577" target="_blank" rel="noopener" class="store-card" style="background: var(--card-bg); padding: 10px 16px; justify-content: center; flex: 1; min-width: 140px; box-shadow: none;">
+                <span class="store-name" style="display: flex; align-items: center; gap: 12px;">
+                  <img src="../images/liverpool.webp" alt="Logo de Liverpool" style="height: 32px; width: auto; object-fit: contain;" />
+                  Liverpool
+                </span>
+              </a>
+              <a href="https://www.suburbia.com.mx/tienda/pdp/aceite-cbd-los-frutos-de-mar%C3%ADa/1177632577?skuid=1177632577" target="_blank" rel="noopener" class="store-card" style="background: var(--card-bg); padding: 10px 16px; justify-content: center; flex: 1; min-width: 140px; box-shadow: none;">
+                <span class="store-name" style="display: flex; align-items: center; gap: 12px;">
+                  <img src="../images/suburbia.webp" alt="Logo de Suburbia" style="height: 32px; width: auto; object-fit: contain;" />
+                  Suburbia
+                </span>
+              </a>
+            </div>
           </div>
+
+          <!-- Variante 500 mg -->
+          <div class="gotas-size-group size-500" style="display: none; flex-direction: column; align-items: center; width: 100%;">
+            <button class="btn-add-to-cart" data-product-id="1" style="margin-bottom: 20px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+              Agregar al carrito — $599
+            </button>
+            <p style="font-weight: 600; margin-bottom: 12px; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted);">Otros puntos de venta:</p>
+            <div class="store-links" style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 12px; justify-content: center; width: 100%; max-width: 500px; margin: 0 auto;">
+              <a href="https://www.liverpool.com.mx/tienda/pdp/aceite-cbd-los-frutos-de-mar%C3%ADa/1177635835?skuid=1177635835" target="_blank" rel="noopener" class="store-card" style="background: var(--card-bg); padding: 10px 16px; justify-content: center; flex: 1; min-width: 140px; box-shadow: none;">
+                <span class="store-name" style="display: flex; align-items: center; gap: 12px;">
+                  <img src="../images/liverpool.webp" alt="Logo de Liverpool" style="height: 32px; width: auto; object-fit: contain;" />
+                  Liverpool
+                </span>
+              </a>
+              <a href="https://www.suburbia.com.mx/tienda/pdp/aceite-cbd-los-frutos-de-mar%C3%ADa/1177635835?skuid=1177635835" target="_blank" rel="noopener" class="store-card" style="background: var(--card-bg); padding: 10px 16px; justify-content: center; flex: 1; min-width: 140px; box-shadow: none;">
+                <span class="store-name" style="display: flex; align-items: center; gap: 12px;">
+                  <img src="../images/suburbia.webp" alt="Logo de Suburbia" style="height: 32px; width: auto; object-fit: contain;" />
+                  Suburbia
+                </span>
+              </a>
+            </div>
           </div>
-          <div class="variant-panel link-variant-1000" style="width: 100%;">
-          <p style="font-weight: 600; margin-bottom: 12px; margin-top: 16px; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted);">Isolated 300 mg:</p>
-          <div class="store-links" style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 12px; justify-content: center; width: 100%; max-width: 500px; margin: 0 auto;">
-          <a href="https://www.liverpool.com.mx/tienda/pdp/gotas-los-frutos-de-mar%C3%ADa/1179063847?skuid=1179063847" target="_blank" rel="noopener" class="store-card" style="background: var(--card-bg); padding: 10px 16px; justify-content: center; flex: 1; min-width: 140px; box-shadow: none;">
-            <span class="store-name" style="display: flex; align-items: center; gap: 12px;">
-              <img src="../images/liverpool.webp" alt="Logo de Liverpool" style="height: 32px; width: auto; object-fit: contain;" />
-              Liverpool
-            </span>
-          </a>
-          </div>
+        </div>
+
+        <!-- Panel Isolated -->
+        <div class="variant-panel link-variant-1000" style="width: 100%;">
+          <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
+            <button class="btn-add-to-cart" data-product-id="11" style="margin-bottom: 20px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+              Agregar al carrito — $300
+            </button>
+            <p style="font-weight: 600; margin-bottom: 12px; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted);">Otros puntos de venta:</p>
+            <div class="store-links" style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 12px; justify-content: center; width: 100%; max-width: 500px; margin: 0 auto;">
+              <a href="https://www.liverpool.com.mx/tienda/pdp/gotas-los-frutos-de-mar%C3%ADa/1179063847?skuid=1179063847" target="_blank" rel="noopener" class="store-card" style="background: var(--card-bg); padding: 10px 16px; justify-content: center; flex: 1; min-width: 140px; box-shadow: none;">
+                <span class="store-name" style="display: flex; align-items: center; gap: 12px;">
+                  <img src="../images/liverpool.webp" alt="Logo de Liverpool" style="height: 32px; width: auto; object-fit: contain;" />
+                  Liverpool
+                </span>
+              </a>
+            </div>
           </div>
         </div>
         </div>
@@ -359,50 +392,82 @@
           <button class="variant-tab is-active" data-variant="variant-300">Suplemento Alimenticio</button>
           <button class="variant-tab" data-variant="variant-1000">Isolated</button>
         </div>
-          <div class="variant-panel link-variant-300 is-active" style="width: 100%;">
-          <p style="font-weight: 600; margin-bottom: 12px; margin-top: 16px; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted);">Gotas 300 mg — Ideal para empezar:</p>
-          <div class="store-links" style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 12px; justify-content: center; width: 100%; max-width: 500px; margin: 0 auto;">
-          <a href="https://www.liverpool.com.mx/tienda/pdp/aceite-cbd-los-frutos-de-mar%C3%ADa/1177632577?skuid=1177632577" target="_blank" rel="noopener" class="store-card" style="background: var(--card-bg); padding: 10px 16px; justify-content: center; flex: 1; min-width: 140px; box-shadow: none;">
-            <span class="store-name" style="display: flex; align-items: center; gap: 12px;">
-              <img src="../images/liverpool.webp" alt="Logo de Liverpool" style="height: 32px; width: auto; object-fit: contain;" />
-              Liverpool
-            </span>
-          </a>
-          <a href="https://www.suburbia.com.mx/tienda/pdp/aceite-cbd-los-frutos-de-mar%C3%ADa/1177632577?skuid=1177632577" target="_blank" rel="noopener" class="store-card" style="background: var(--card-bg); padding: 10px 16px; justify-content: center; flex: 1; min-width: 140px; box-shadow: none;">
-            <span class="store-name" style="display: flex; align-items: center; gap: 12px;">
-              <img src="../images/suburbia.webp" alt="Logo de Suburbia" style="height: 32px; width: auto; object-fit: contain;" />
-              Suburbia
-            </span>
-          </a>
+
+        <!-- Panel Suplemento Alimenticio -->
+        <div class="variant-panel link-variant-300 is-active" style="width: 100%;">
+          <div style="margin-bottom: 24px; width: 100%; max-width: 320px; margin-inline: auto;">
+            <label for="gotas-size" style="display:block; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 8px;">Intensidad:</label>
+            <select class="gotas-size-select checkout-field" onchange="toggleGotasSize(this.value)" style="width: 100%; padding: 12px 16px; font-family: var(--sans); font-size: 15px; font-weight: 600; border-radius: 10px; border: 1px solid var(--stroke); background: #fff; cursor: pointer; color: var(--ink);">
+              <option value="300">Gotas 300 mg — Ideal para empezar</option>
+              <option value="500">Gotas 500 mg — Para uso continuo</option>
+            </select>
           </div>
-          <p style="font-weight: 600; margin-bottom: 12px; margin-top: 16px; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted);">Gotas 500 mg — Para uso más continuo:</p>
-          <div class="store-links" style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 12px; justify-content: center; width: 100%; max-width: 500px; margin: 0 auto;">
-          <a href="https://www.liverpool.com.mx/tienda/pdp/aceite-cbd-los-frutos-de-mar%C3%ADa/1177635835?skuid=1177635835" target="_blank" rel="noopener" class="store-card" style="background: var(--card-bg); padding: 10px 16px; justify-content: center; flex: 1; min-width: 140px; box-shadow: none;">
-            <span class="store-name" style="display: flex; align-items: center; gap: 12px;">
-              <img src="../images/liverpool.webp" alt="Logo de Liverpool" style="height: 32px; width: auto; object-fit: contain;" />
-              Liverpool
-            </span>
-          </a>
-          <a href="https://www.suburbia.com.mx/tienda/pdp/aceite-cbd-los-frutos-de-mar%C3%ADa/1177635835?skuid=1177635835" target="_blank" rel="noopener" class="store-card" style="background: var(--card-bg); padding: 10px 16px; justify-content: center; flex: 1; min-width: 140px; box-shadow: none;">
-            <span class="store-name" style="display: flex; align-items: center; gap: 12px;">
-              <img src="../images/suburbia.webp" alt="Logo de Suburbia" style="height: 32px; width: auto; object-fit: contain;" />
-              Suburbia
-            </span>
-          </a>
+
+          <!-- Variante 300 mg -->
+          <div class="gotas-size-group size-300" style="display: flex; flex-direction: column; align-items: center; width: 100%;">
+            <button class="btn-add-to-cart" data-product-id="10" style="margin-bottom: 20px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+              Agregar al carrito — $399
+            </button>
+            <p style="font-weight: 600; margin-bottom: 12px; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted);">Otros puntos de venta:</p>
+            <div class="store-links" style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 12px; justify-content: center; width: 100%; max-width: 500px; margin: 0 auto;">
+              <a href="https://www.liverpool.com.mx/tienda/pdp/aceite-cbd-los-frutos-de-mar%C3%ADa/1177632577?skuid=1177632577" target="_blank" rel="noopener" class="store-card" style="background: var(--card-bg); padding: 10px 16px; justify-content: center; flex: 1; min-width: 140px; box-shadow: none;">
+                <span class="store-name" style="display: flex; align-items: center; gap: 12px;">
+                  <img src="../images/liverpool.webp" alt="Logo de Liverpool" style="height: 32px; width: auto; object-fit: contain;" />
+                  Liverpool
+                </span>
+              </a>
+              <a href="https://www.suburbia.com.mx/tienda/pdp/aceite-cbd-los-frutos-de-mar%C3%ADa/1177632577?skuid=1177632577" target="_blank" rel="noopener" class="store-card" style="background: var(--card-bg); padding: 10px 16px; justify-content: center; flex: 1; min-width: 140px; box-shadow: none;">
+                <span class="store-name" style="display: flex; align-items: center; gap: 12px;">
+                  <img src="../images/suburbia.webp" alt="Logo de Suburbia" style="height: 32px; width: auto; object-fit: contain;" />
+                  Suburbia
+                </span>
+              </a>
+            </div>
           </div>
+
+          <!-- Variante 500 mg -->
+          <div class="gotas-size-group size-500" style="display: none; flex-direction: column; align-items: center; width: 100%;">
+            <button class="btn-add-to-cart" data-product-id="1" style="margin-bottom: 20px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+              Agregar al carrito — $599
+            </button>
+            <p style="font-weight: 600; margin-bottom: 12px; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted);">Otros puntos de venta:</p>
+            <div class="store-links" style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 12px; justify-content: center; width: 100%; max-width: 500px; margin: 0 auto;">
+              <a href="https://www.liverpool.com.mx/tienda/pdp/aceite-cbd-los-frutos-de-mar%C3%ADa/1177635835?skuid=1177635835" target="_blank" rel="noopener" class="store-card" style="background: var(--card-bg); padding: 10px 16px; justify-content: center; flex: 1; min-width: 140px; box-shadow: none;">
+                <span class="store-name" style="display: flex; align-items: center; gap: 12px;">
+                  <img src="../images/liverpool.webp" alt="Logo de Liverpool" style="height: 32px; width: auto; object-fit: contain;" />
+                  Liverpool
+                </span>
+              </a>
+              <a href="https://www.suburbia.com.mx/tienda/pdp/aceite-cbd-los-frutos-de-mar%C3%ADa/1177635835?skuid=1177635835" target="_blank" rel="noopener" class="store-card" style="background: var(--card-bg); padding: 10px 16px; justify-content: center; flex: 1; min-width: 140px; box-shadow: none;">
+                <span class="store-name" style="display: flex; align-items: center; gap: 12px;">
+                  <img src="../images/suburbia.webp" alt="Logo de Suburbia" style="height: 32px; width: auto; object-fit: contain;" />
+                  Suburbia
+                </span>
+              </a>
+            </div>
           </div>
-          <div class="variant-panel link-variant-1000" style="width: 100%;">
-          <p style="font-weight: 600; margin-bottom: 12px; margin-top: 16px; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted);">Isolated 300 mg:</p>
-          <div class="store-links" style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 12px; justify-content: center; width: 100%; max-width: 500px; margin: 0 auto;">
-          <a href="https://www.liverpool.com.mx/tienda/pdp/gotas-los-frutos-de-mar%C3%ADa/1179063847?skuid=1179063847" target="_blank" rel="noopener" class="store-card" style="background: var(--card-bg); padding: 10px 16px; justify-content: center; flex: 1; min-width: 140px; box-shadow: none;">
-            <span class="store-name" style="display: flex; align-items: center; gap: 12px;">
-              <img src="../images/liverpool.webp" alt="Logo de Liverpool" style="height: 32px; width: auto; object-fit: contain;" />
-              Liverpool
-            </span>
-          </a>
+        </div>
+
+        <!-- Panel Isolated -->
+        <div class="variant-panel link-variant-1000" style="width: 100%;">
+          <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
+            <button class="btn-add-to-cart" data-product-id="11" style="margin-bottom: 20px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+              Agregar al carrito — $300
+            </button>
+            <p style="font-weight: 600; margin-bottom: 12px; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted);">Otros puntos de venta:</p>
+            <div class="store-links" style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 12px; justify-content: center; width: 100%; max-width: 500px; margin: 0 auto;">
+              <a href="https://www.liverpool.com.mx/tienda/pdp/gotas-los-frutos-de-mar%C3%ADa/1179063847?skuid=1179063847" target="_blank" rel="noopener" class="store-card" style="background: var(--card-bg); padding: 10px 16px; justify-content: center; flex: 1; min-width: 140px; box-shadow: none;">
+                <span class="store-name" style="display: flex; align-items: center; gap: 12px;">
+                  <img src="../images/liverpool.webp" alt="Logo de Liverpool" style="height: 32px; width: auto; object-fit: contain;" />
+                  Liverpool
+                </span>
+              </a>
+            </div>
           </div>
-          </div>
-      </div>
+        </div>
     </section>
 
   </main>
@@ -431,6 +496,8 @@
   </script>
   <script src="../js/hamburger.js" defer></script>
   <script src="../js/product-page.js" defer></script>
+  <script src="../js/cart.js"></script>
+  <script src="../js/cart-ui.js"></script>
 </body>
 
 </html>

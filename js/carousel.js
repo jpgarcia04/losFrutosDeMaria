@@ -1,3 +1,11 @@
+/**
+ * Inicializa y controla el funcionamiento del carrusel de productos.
+ * 
+ * Este script gestiona el comportamiento de desplazamiento infinito del carrusel 
+ * clonando elementos al principio y al final. También maneja la navegación 
+ * mediante botones (anterior/siguiente), los indicadores (dots) y el 
+ * reposicionamiento automático al hacer scroll o cambiar el tamaño de la ventana.
+ */
 document.addEventListener('DOMContentLoaded', () => {
     const track = document.querySelector('.product-carousel__track');
     if (!track) return;

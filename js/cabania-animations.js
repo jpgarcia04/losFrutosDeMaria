@@ -1,3 +1,10 @@
+/**
+ * Maneja las animaciones específicas para la página de la cabaña.
+ * 
+ * Utiliza IntersectionObserver para detectar cuándo los elementos con
+ * la clase '.cabana-fade-in' entran en el viewport y les aplica la
+ * clase '.is-visible' para realizar una transición suave.
+ */
 // Scroll animations for cabana-specific elements
 document.addEventListener('DOMContentLoaded', () => {
   const fadeEls = document.querySelectorAll('.cabana-fade-in');

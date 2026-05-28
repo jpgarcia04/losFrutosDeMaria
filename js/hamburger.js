@@ -1,3 +1,9 @@
+/**
+ * Maneja la lógica del menú de navegación móvil (hamburger menu).
+ * 
+ * Permite abrir y cerrar el menú principal al hacer clic en el botón toggle,
+ * y cierra automáticamente el menú cuando se hace clic en cualquier enlace interno.
+ */
 document.addEventListener('DOMContentLoaded', () => {
   const toggle = document.getElementById('nav-toggle');
   const nav = document.getElementById('main-nav');

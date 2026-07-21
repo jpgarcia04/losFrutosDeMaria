@@ -20,10 +20,26 @@ La página web está publicada y puede visitarse en el siguiente enlace:
 - **Animaciones Suaves**: Micro-interacciones y efectos de scroll para una navegación fluida.
 
 ## 🛠️ Tecnologías Utilizadas
-Este sitio está construido con tecnologías web puras para garantizar ligereza y rendimiento:
+El frontend está construido con tecnologías web puras para garantizar ligereza y rendimiento:
 - ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) **HTML5 Semántico**
 - ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) **CSS3 Personalizado** (Variables, Flexbox, Grid)
 - ![JavaScript](https://img.shields.io/badge/javascript-%23F7DF1E.svg?style=for-the-badge&logo=javascript&logoColor=black) **Vanilla JavaScript**
+
+El pago se procesa con un **backend propio en Node.js** (carpeta [`backend/`](backend/README.md)), desplegado en un VPS, que actúa como intermediario seguro entre el carrito y **EcartPay**. Ver detalle abajo.
+
+---
+
+## 🛒 E-commerce
+
+El sitio incluye un carrito de compras y checkout funcionales:
+
+- **Carrito** ([`js/cart.js`](js/cart.js)): estado persistido en `localStorage`, catálogo de 11 productos con IDs fijos que deben coincidir con la tabla `products` del backend.
+- **UI del carrito** ([`js/cart-ui.js`](js/cart-ui.js)): drawer lateral, contador, notificaciones.
+- **Checkout** ([`checkout.html`](checkout.html) + [`js/checkout.js`](js/checkout.js)): formulario de envío (32 estados de México) que **no calcula ni envía precios** — solo manda `{ id, quantity }` de cada artículo al backend. El backend valida stock y precios contra su propia base de datos, crea la orden y responde con un `payment_url`: un link hosted de pago seguro de EcartPay al que el navegador redirige. El sitio nunca ve datos de tarjeta ni llaves de pago.
+
+**Backend en producción:** `https://bj-api.site` (VPS propio, no GitHub Pages — ver [`backend/README.md`](backend/README.md) y `context.md` para infraestructura completa).
+
+⚠️ **Estado actual:** el flujo de pago está desplegado y probado end-to-end, pero el backend usa llaves de EcartPay *placeholder* hasta que se carguen las llaves reales de producción — ver `context.md` para el pendiente exacto.
 
 ---
 

@@ -7,13 +7,8 @@
  */
 
 function validateCheckout(req, res, next) {
-  const { customer, shipping_address, items, token_id } = req.body;
+  const { customer, shipping_address, items } = req.body;
   const errors = [];
-
-  // ── token_id ──────────────────────────────────────────────────
-  if (!token_id || typeof token_id !== 'string') {
-    errors.push('token_id es obligatorio y debe ser una cadena.');
-  }
 
   // ── customer ──────────────────────────────────────────────────
   if (!customer || typeof customer !== 'object') {

@@ -12,16 +12,20 @@
 require('dotenv').config();
 const { pool } = require('./connection');
 
+// Los IDs son explícitos: deben coincidir con PRODUCT_CATALOG
+// de js/cart.js en el frontend.
 const PRODUCTS = [
-  { sku: 'LFDM-GOTAS-001',      name: 'Gotas LFDM',              price: 599.00, stock: 100 },
-  { sku: 'LFDM-CREMA-001',      name: 'Crema Facial Nocturna',    price: 499.00, stock: 80  },
-  { sku: 'LFDM-COLAGENO-001',   name: 'CBD Collagen',             price: 449.00, stock: 60  },
-  { sku: 'LFDM-ALMOHADA-001',   name: 'Almohada Terapéutica',     price: 399.00, stock: 50  },
-  { sku: 'LFDM-POMADA-001',     name: 'Pomada / Bálsamo Corporal', price: 349.00, stock: 70  },
-  { sku: 'LFDM-SHAMPOO-001',    name: 'Shampoo LFDM',             price: 299.00, stock: 90  },
-  { sku: 'LFDM-VELA-001',       name: 'Vela Aromática',            price: 279.00, stock: 120 },
-  { sku: 'LFDM-GEL-001',        name: 'Gel Íntimo',                price: 329.00, stock: 60  },
-  { sku: 'LFDM-DESINF-001',     name: 'Desinfectante',             price: 149.00, stock: 150 },
+  { id: 1,  sku: 'LFDM-GOTAS-500',     name: 'Gotas LFDM (Suplemento 500 mg)', price: 599.00, stock: 100 },
+  { id: 2,  sku: 'LFDM-CREMA-001',     name: 'Crema Facial Nocturna',          price: 499.00, stock: 80  },
+  { id: 3,  sku: 'LFDM-COLAGENO-001',  name: 'CBD Collagen',                   price: 449.00, stock: 60  },
+  { id: 4,  sku: 'LFDM-ALMOHADA-001',  name: 'Almohada Terapéutica',           price: 399.00, stock: 50  },
+  { id: 5,  sku: 'LFDM-POMADA-001',    name: 'Pomada / Bálsamo Corporal',      price: 349.00, stock: 70  },
+  { id: 6,  sku: 'LFDM-SHAMPOO-001',   name: 'Shampoo LFDM',                   price: 299.00, stock: 90  },
+  { id: 7,  sku: 'LFDM-VELA-001',      name: 'Vela Aromática',                 price: 279.00, stock: 120 },
+  { id: 8,  sku: 'LFDM-GEL-001',       name: 'Gel Íntimo',                     price: 329.00, stock: 60  },
+  { id: 9,  sku: 'LFDM-DESINF-001',    name: 'Desinfectante',                  price: 149.00, stock: 150 },
+  { id: 10, sku: 'LFDM-GOTAS-300',     name: 'Gotas LFDM (Suplemento 300 mg)', price: 399.00, stock: 100 },
+  { id: 11, sku: 'LFDM-GOTAS-ISO',     name: 'Gotas LFDM (Isolated 300 mg)',   price: 300.00, stock: 100 },
 ];
 
 (async () => {
@@ -33,11 +37,11 @@ const PRODUCTS = [
       process.exit(0);
     }
 
-    // Insertar productos
+    // Insertar productos (con ID explícito para coincidir con el frontend)
     for (const p of PRODUCTS) {
       await pool.execute(
-        'INSERT INTO products (sku, name, price, stock) VALUES (?, ?, ?, ?)',
-        [p.sku, p.name, p.price, p.stock],
+        'INSERT INTO products (id, sku, name, price, stock) VALUES (?, ?, ?, ?, ?)',
+        [p.id, p.sku, p.name, p.price, p.stock],
       );
     }
 

@@ -7,9 +7,9 @@
 
 const { Router }          = require('express');
 const rateLimit            = require('express-rate-limit');
-const { validateCheckout } = require('./middleware/validate');
-const { checkout }         = require('./controllers/checkout.controller');
-const { handleWebhook }    = require('./controllers/webhook.controller');
+const { validateCheckout } = require('../middleware/validate');
+const { checkout }         = require('../controllers/checkout.controller');
+const { handleWebhook }    = require('../controllers/webhook.controller');
 
 const router = Router();
 

@@ -3,38 +3,50 @@
  *  Servicio EcartPay
  *  Encapsula toda la comunicación con la pasarela de pagos.
  *  Usa la API nativa `fetch` de Node 18+ (sin dependencias extra).
+ *
+ *  Flujo "Checkouts":
+ *    1. POST /authorizations/token  (Basic public:private) → JWT 1 h
+ *    2. POST /checkouts             (Bearer JWT)           → link hosted
+ *  El cliente paga en la página de EcartPay; la confirmación
+ *  llega por webhook a /api/v1/webhooks/ecartpay.
  * ═══════════════════════════════════════════════════════════════
  */
 
-const ECARTPAY_API_URL  = process.env.ECARTPAY_API_URL || 'https://sandbox.ecartpay.com/api';
-const ECARTPAY_SECRET   = process.env.ECARTPAY_SECRET_KEY;
+const ECARTPAY_API_URL     = process.env.ECARTPAY_API_URL || 'https://sandbox.ecartpay.com/api';
+const ECARTPAY_PUBLIC_KEY  = process.env.ECARTPAY_PUBLIC_KEY;
+const ECARTPAY_PRIVATE_KEY = process.env.ECARTPAY_PRIVATE_KEY;
 
 /**
  * Cache básico para el token de autorización.
- * EcartPay devuelve tokens con expiración; aquí se renueva
- * automáticamente si caduca (o si aún no se ha solicitado).
+ * EcartPay emite JWT con expiración de 1 hora; se renueva
+ * automáticamente con 5 minutos de margen.
  */
 let authCache = { token: null, expiresAt: 0 };
 
 /**
  * Obtiene (o renueva) el token de autorización de EcartPay.
- * Endpoint: POST /api/authorizations/token
- * @returns {Promise<string>} Bearer token
+ * Endpoint: POST /authorizations/token
+ * Auth:     Basic base64(public_key:private_key)
+ * @returns {Promise<string>} Bearer token (JWT)
  */
 async function getAuthToken() {
   const now = Date.now();
 
-  // Reusar token válido (con 60 s de margen)
-  if (authCache.token && authCache.expiresAt > now + 60_000) {
+  if (authCache.token && authCache.expiresAt > now) {
     return authCache.token;
   }
 
+  if (!ECARTPAY_PUBLIC_KEY || !ECARTPAY_PRIVATE_KEY) {
+    throw new Error('Faltan ECARTPAY_PUBLIC_KEY / ECARTPAY_PRIVATE_KEY en el entorno');
+  }
+
+  const basic = Buffer
+    .from(`${ECARTPAY_PUBLIC_KEY}:${ECARTPAY_PRIVATE_KEY}`)
+    .toString('base64');
+
   const res = await fetch(`${ECARTPAY_API_URL}/authorizations/token`, {
     method: 'POST',
-    headers: {
-      'Content-Type':  'application/json',
-      'Authorization': ECARTPAY_SECRET,
-    },
+    headers: { 'Authorization': `Basic ${basic}` },
   });
 
   if (!res.ok) {
@@ -44,60 +56,62 @@ async function getAuthToken() {
 
   const data = await res.json();
 
-  // Guardar en cache (asumimos 1 h si no viene expires_in)
+  // El token dura 1 h; renovamos a los 55 min
   authCache = {
-    token:     data.token || data.access_token,
-    expiresAt: now + ((data.expires_in || 3600) * 1000),
+    token:     data.token,
+    expiresAt: now + 55 * 60 * 1000,
   };
 
   return authCache.token;
 }
 
 /**
- * Crea una orden/cargo en EcartPay.
- * Endpoint: POST /api/orders
+ * Crea un Checkout hosted en EcartPay con el monto fijado
+ * por el servidor y devuelve el link de pago.
+ * Endpoint: POST /checkouts
  *
- * @param {object} params
- * @param {string} params.tokenId      Token de tarjeta generado en el frontend
- * @param {number} params.amount       Monto total en MXN (decimal)
- * @param {string} params.description  Descripción del cargo
- * @param {string} params.orderUid     Referencia interna (UUID)
- * @param {object} params.customer     { name, email, phone }
- * @returns {Promise<object>} Respuesta de EcartPay
+ * @param {object}   params
+ * @param {number}   params.total      Monto total en MXN (fijado server-side)
+ * @param {string}   params.concept    Descripción del cargo
+ * @param {string}   params.orderUid   Referencia interna (UUID de la orden)
+ * @param {object[]} params.items      [{ name, price, quantity }]
+ * @param {string}   params.notifyUrl  URL del webhook de confirmación
+ * @returns {Promise<object>} Respuesta de EcartPay ({ id, link, … })
  */
-async function createCharge({ tokenId, amount, description, orderUid, customer }) {
+async function createCheckout({ total, concept, orderUid, items, notifyUrl }) {
   const authToken = await getAuthToken();
 
   const payload = {
-    token_id:    tokenId,
-    amount:      amount,
-    currency:    'MXN',
-    description: description,
-    reference:   orderUid,
-    customer: {
-      name:  customer.name,
-      email: customer.email,
-      phone: customer.phone,
-    },
+    currency:     'MXN',
+    amounts:      [Number(total.toFixed(2))],
+    concept:      concept,
+    items:        items.map((i) => ({
+      name:     i.name,
+      price:    i.price,
+      quantity: i.quantity,
+    })),
+    notify_url:   notifyUrl,
+    reference_id: orderUid,
+    reference:    `Orden LFDM ${orderUid}`,
   };
 
-  const res = await fetch(`${ECARTPAY_API_URL}/orders`, {
+  const res = await fetch(`${ECARTPAY_API_URL}/checkouts`, {
     method: 'POST',
     headers: {
       'Content-Type':  'application/json',
-      'Authorization': authToken,
+      'Authorization': `Bearer ${authToken}`,
     },
     body: JSON.stringify(payload),
   });
 
-  const data = await res.json();
+  const data = await res.json().catch(() => ({}));
 
-  if (!res.ok) {
+  if (!res.ok || !data.link) {
     const errorMsg = data.message || data.error || JSON.stringify(data);
-    throw new Error(`EcartPay createCharge falló (${res.status}): ${errorMsg}`);
+    throw new Error(`EcartPay createCheckout falló (${res.status}): ${errorMsg}`);
   }
 
   return data;
 }
 
-module.exports = { getAuthToken, createCharge };
+module.exports = { getAuthToken, createCheckout };

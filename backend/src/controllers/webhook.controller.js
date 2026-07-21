@@ -5,55 +5,97 @@
  *
  *  Recibe notificaciones asíncronas desde los servidores de
  *  EcartPay y actualiza el estado de la orden.
+ *
+ *  Autenticación (docs.ecartpay.com/docs/webhook-authentication):
+ *    Headers:  x-pay-timestamp, x-pay-webhook-id, x-pay-signature
+ *    Firma:    HMAC-SHA256(secret, `${timestamp}.${webhookId}.${JSON.stringify(data)}`)
+ *    El header llega con prefijo "SHA256=".
  * ═══════════════════════════════════════════════════════════════
  */
 
+const crypto  = require('crypto');
 const Order   = require('../models/order.model');
 const Product = require('../models/product.model');
 const { pool } = require('../db/connection');
 
 /**
+ * Compara la firma recibida contra las firmas candidatas en
+ * tiempo constante. EcartPay documenta la base como
+ * `{timestamp}.{webhook_id}.{JSON.stringify(data)}`; se aceptan
+ * tanto el body completo como su campo `data` para cubrir ambas
+ * interpretaciones del payload.
+ */
+function isValidSignature(req) {
+  const secret = process.env.ECARTPAY_WEBHOOK_SECRET;
+
+  if (!secret) {
+    // Sin secret configurado: rechazar en producción (fail-closed),
+    // permitir en desarrollo/sandbox para pruebas locales.
+    if (process.env.NODE_ENV === 'production') {
+      console.error('[WEBHOOK] ECARTPAY_WEBHOOK_SECRET no configurado. Rechazando.');
+      return false;
+    }
+    return true;
+  }
+
+  const timestamp = req.headers['x-pay-timestamp'];
+  const webhookId = req.headers['x-pay-webhook-id'];
+  const received  = (req.headers['x-pay-signature'] || '').replace(/^SHA256=/i, '');
+
+  if (!timestamp || !webhookId || !received) return false;
+
+  const candidates = [req.body];
+  if (req.body && typeof req.body === 'object' && req.body.data !== undefined) {
+    candidates.push(req.body.data);
+  }
+
+  let receivedBuf;
+  try {
+    receivedBuf = Buffer.from(received, 'hex');
+  } catch (_e) {
+    return false;
+  }
+
+  return candidates.some((data) => {
+    const base = `${timestamp}.${webhookId}.${JSON.stringify(data)}`;
+    const expected = crypto
+      .createHmac('sha256', secret)
+      .update(base, 'utf8')
+      .digest();
+
+    return receivedBuf.length === expected.length
+      && crypto.timingSafeEqual(receivedBuf, expected);
+  });
+}
+
+/**
  * Handler del webhook de EcartPay.
  *
- * EcartPay envía un POST con datos sobre el estado de la
- * transacción.  Debemos:
- *   1. Validar la legitimidad de la petición.
- *   2. Encontrar la orden interna.
- *   3. Actualizar el status a 'paid'.
- *   4. Descontar el stock.
- *   5. Responder 200 OK inmediatamente.
+ *   1. Validar la firma HMAC de la petición.
+ *   2. Encontrar la orden interna (por id de checkout o reference).
+ *   3. Actualizar el status según el evento.
+ *   4. Descontar el stock si el pago fue confirmado.
+ *   5. Responder 200 OK.
  */
 async function handleWebhook(req, res) {
   try {
-    const payload = req.body;
+    const payload = req.body || {};
 
     console.log('[WEBHOOK] Notificación recibida:', JSON.stringify(payload));
 
-    // ─── 1. Validación de origen ────────────────────────────────
-    // EcartPay puede enviar un header con la secret key o firma.
-    // Aquí validamos que el header de autenticación coincida
-    // con nuestra clave secreta (adaptar según documentación
-    // actual de webhooks de EcartPay).
-    const webhookSecret = req.headers['x-ecartpay-signature']
-      || req.headers['authorization']
-      || null;
-
-    if (
-      process.env.NODE_ENV === 'production' &&
-      webhookSecret !== process.env.ECARTPAY_SECRET_KEY
-    ) {
+    // ─── 1. Validación de firma ─────────────────────────────────
+    if (!isValidSignature(req)) {
       console.warn('[WEBHOOK] Firma inválida. Rechazando.');
       return res.status(401).json({ success: false, message: 'No autorizado' });
     }
 
-    // ─── 2. Extraer datos del webhook ───────────────────────────
-    const transactionId = payload.transaction_id
-      || payload.id
-      || payload.order_id
-      || null;
+    // ─── 2. Extraer datos del evento ────────────────────────────
+    //  Estructura típica: { event: "...", data: { id, status, reference, … } }
+    const data = (payload.data && typeof payload.data === 'object') ? payload.data : payload;
 
-    const eventStatus = (payload.status || '').toLowerCase();
-    const reference   = payload.reference || null;
+    const transactionId = data.checkout_id || data.order_id || data.id || null;
+    const eventStatus   = String(data.status || '').toLowerCase();
+    const reference     = data.reference_id || data.reference || null;
 
     if (!transactionId && !reference) {
       console.warn('[WEBHOOK] Payload sin identificador válido.');
@@ -67,9 +109,10 @@ async function handleWebhook(req, res) {
       order = await Order.findByEcartpayTxn(transactionId);
     }
 
-    // Si no la encontramos por txn_id, intentar por reference (UUID)
     if (!order && reference) {
-      order = await Order.findByUid(reference);
+      // reference_id lleva el UUID; reference llega como "Orden LFDM <uuid>"
+      const uid = String(reference).replace(/^Orden LFDM\s*#?\s*/i, '').trim();
+      order = await Order.findByUid(uid);
     }
 
     if (!order) {
@@ -85,7 +128,6 @@ async function handleWebhook(req, res) {
 
     // ─── 4. Actualizar estado y descontar stock ─────────────────
     if (['paid', 'completed', 'approved', 'success'].includes(eventStatus)) {
-      // Obtener los ítems de la orden
       const items = await Order.getItems(order.id);
 
       // Descontar stock dentro de una transacción
@@ -106,7 +148,6 @@ async function handleWebhook(req, res) {
         conn.release();
       }
 
-      // Marcar la orden como pagada
       await Order.updateStatus(order.id, 'paid', transactionId);
       console.log(`[WEBHOOK] Orden ${order.order_uid} marcada como PAID.`);
 
@@ -119,7 +160,7 @@ async function handleWebhook(req, res) {
       console.log(`[WEBHOOK] Orden ${order.order_uid} marcada como REFUNDED.`);
     }
 
-    // ─── 5. Responder 200 OK inmediato ──────────────────────────
+    // ─── 5. Responder 200 OK ────────────────────────────────────
     return res.sendStatus(200);
 
   } catch (err) {

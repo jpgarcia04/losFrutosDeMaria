@@ -34,7 +34,7 @@ function calculateShipping(subtotal) {
  */
 async function checkout(req, res) {
   try {
-    const { customer, shipping_address, items, token_id } = req.body;
+    const { customer, shipping_address, items } = req.body;
 
     // ─── 1. Obtener precios reales y verificar stock ────────────
     const productIds = items.map((i) => i.id);
@@ -99,47 +99,55 @@ async function checkout(req, res) {
       shipping: shipping_address,
     });
 
-    // ─── 4. Enviar cargo a EcartPay ─────────────────────────────
-    let ecartpayResponse;
+    // ─── 4. Crear Checkout hosted en EcartPay ───────────────────
+    //  El monto lo fija el servidor; el cliente paga en la página
+    //  segura de EcartPay y la confirmación llega por webhook.
+    let ecartpayCheckout;
     try {
-      ecartpayResponse = await ecartpay.createCharge({
-        tokenId:     token_id,
-        amount:      totalAmount,
-        description: `Orden LFDM #${orderUid}`,
+      const backendUrl = process.env.BACKEND_PUBLIC_URL || 'https://bj-api.site';
+
+      const checkoutItems = enrichedItems.map((i) => ({
+        name:     i.name,
+        price:    i.priceAtPurchase,
+        quantity: i.quantity,
+      }));
+
+      if (shippingCost > 0) {
+        checkoutItems.push({ name: 'Envío estándar', price: shippingCost, quantity: 1 });
+      }
+
+      ecartpayCheckout = await ecartpay.createCheckout({
+        total:     totalAmount,
+        concept:   `Orden LFDM #${orderUid}`,
         orderUid,
-        customer,
+        items:     checkoutItems,
+        notifyUrl: `${backendUrl}/api/v1/webhooks/ecartpay`,
       });
 
-      // Guardar el ID de transacción de EcartPay
-      const txnId = ecartpayResponse.id
-        || ecartpayResponse.transaction_id
-        || ecartpayResponse.order_id
-        || null;
-
-      await Order.updateStatus(orderId, 'processing', txnId);
+      // Guardar el ID del checkout de EcartPay para conciliar el webhook
+      await Order.updateStatus(orderId, 'processing', ecartpayCheckout.id || null);
     } catch (payErr) {
-      // El pago falló → marcar orden como fallida
       console.error('[CHECKOUT] Error en EcartPay:', payErr.message);
       await Order.updateStatus(orderId, 'failed');
 
       return res.status(502).json({
         success: false,
-        message: 'Error al procesar el pago. Intente de nuevo.',
+        message: 'No se pudo iniciar el pago. Intente de nuevo en unos minutos.',
         order_uid: orderUid,
       });
     }
 
-    // ─── 5. Respuesta exitosa ───────────────────────────────────
+    // ─── 5. Respuesta exitosa: el frontend redirige al link ─────
     return res.status(201).json({
       success: true,
-      message: 'Orden creada y pago en proceso.',
+      message: 'Orden creada. Redirigiendo al pago…',
       data: {
-        order_uid:    orderUid,
+        order_uid:     orderUid,
         subtotal,
         shipping_cost: shippingCost,
         total_amount:  totalAmount,
         status:        'processing',
-        ecartpay:      ecartpayResponse,
+        payment_url:   ecartpayCheckout.link,
       },
     });
   } catch (err) {

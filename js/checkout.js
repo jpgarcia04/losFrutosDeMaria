@@ -1,10 +1,11 @@
 /**
  * ═══════════════════════════════════════════════════════════════
- *  Checkout – Integración EcartPay SDK + Envío de Payload
+ *  Checkout – Orquestación del pago vía backend LFDM
  *
- *  Fase 4 y 5: Tokenización frontend + orquestación del pago.
+ *  El navegador NUNCA fija precios: envía ids + cantidades al
+ *  backend (https://bj-api.site), que valida contra la BD, crea
+ *  la orden y devuelve el link de pago hosted de EcartPay.
  *  Depende de: cart.js (window.LFDMCart)
- *  SDK:        https://sandbox.ecartpay.com/sdk/pay.js
  * ═══════════════════════════════════════════════════════════════
  */
 
@@ -12,12 +13,7 @@
   'use strict';
 
   // ── Configuración ───────────────────────────────────────────
-  // TODO: Cambiar a la URL de producción cuando esté listo
-  const API_BASE_URL = 'http://localhost:3000/api/v1';
-
-  // Llave pública de EcartPay (sandbox)
-  // TODO: Reemplazar con tu publicID real de producción
-  const ECARTPAY_PUBLIC_ID = 'pub6180483beab9d945a86da3bf';
+  const API_BASE_URL = 'https://bj-api.site/api/v1';
 
   const { PRODUCT_CATALOG, getCart, clearCart } = window.LFDMCart;
 
@@ -155,14 +151,14 @@
     };
   }
 
-  // ── Procesar pago con EcartPay SDK ─────────────────────────
+  // ── Procesar pago vía backend LFDM ─────────────────────────
   /**
    * Flujo:
    *  1. Validar formulario HTML5
-   *  2. Lanzar Pay.Checkout.create() del SDK de EcartPay
-   *     – El SDK abre su propio modal/iframe seguro
-   *     – Maneja tokenización internamente
-   *  3. Al completarse, enviar datos al backend
+   *  2. POST /api/v1/checkout con ids + cantidades (sin precios)
+   *     – El backend valida stock y precios contra la BD
+   *     – Crea la orden y el checkout hosted en EcartPay
+   *  3. Redirigir al link de pago seguro de EcartPay
    */
   async function processPayment(e) {
     e.preventDefault();
@@ -184,77 +180,39 @@
     try {
       const formData = getFormData();
 
-      // Construir items para EcartPay
-      const ecartpayItems = cart.map((item) => {
-        const product = PRODUCT_CATALOG[item.id];
-        return {
-          name: product ? product.name : `Producto #${item.id}`,
-          price: product ? product.price : 0,
-          quantity: item.quantity,
-        };
+      const payload = {
+        customer: formData.customer,
+        shipping_address: formData.shipping_address,
+        // Solo ids y cantidades: los precios los fija el servidor
+        items: cart.map((item) => ({
+          id: Number(item.id),
+          quantity: Number(item.quantity),
+        })),
+      };
+
+      const res = await fetch(`${API_BASE_URL}/checkout`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
       });
 
-      // Calcular subtotal para determinar envío
-      const subtotal = cart.reduce((sum, item) => {
-        const product = PRODUCT_CATALOG[item.id];
-        return sum + (product ? product.price * item.quantity : 0);
-      }, 0);
+      const body = await res.json().catch(() => ({}));
 
-      const shipping = subtotal >= SHIPPING_FREE_THRESHOLD ? 0 : SHIPPING_FLAT;
-
-      // Agregar costo de envío como ítem si aplica
-      if (shipping > 0) {
-        ecartpayItems.push({
-          name: 'Envío estándar',
-          price: shipping,
-          quantity: 1,
-        });
+      if (!res.ok || !body.success || !body.data || !body.data.payment_url) {
+        const message = Array.isArray(body.errors)
+          ? body.errors.join(' ')
+          : (body.message || 'No se pudo iniciar el pago. Intenta de nuevo.');
+        showError(message);
+        return;
       }
 
-      // Llamar al SDK de EcartPay – abre checkout modal
-      await Pay.Checkout.create({
-        publicID: ECARTPAY_PUBLIC_ID,
-        order: {
-          email: formData.customer.email,
-          first_name: formData.customer.name.split(' ')[0],
-          last_name: formData.customer.name.split(' ').slice(1).join(' ') || '',
-          phone: formData.customer.phone,
-          currency: 'MXN',
-          items: ecartpayItems,
-          shipping_address: {
-            first_name: formData.customer.name.split(' ')[0],
-            last_name: formData.customer.name.split(' ').slice(1).join(' ') || '',
-            address1: `${formData.shipping_address.street} ${formData.shipping_address.exterior_number}`,
-            address2: formData.shipping_address.interior_number || '',
-            country: {
-              code: 'MX',
-              name: 'Mexico',
-            },
-            state: {
-              code: formData.shipping_address.state.substring(0, 3).toUpperCase(),
-              name: formData.shipping_address.state,
-            },
-            city: formData.shipping_address.city,
-            postal_code: formData.shipping_address.postal_code,
-          },
-        },
-      });
-
-      // Si Pay.Checkout.create() se resuelve sin error,
-      // el pago fue procesado por EcartPay directamente.
-      // Limpiar carrito y mostrar éxito.
-      clearCart();
-      showSuccess();
+      // Redirigir a la página de pago segura de EcartPay.
+      // El carrito NO se vacía aquí: si el cliente cancela el pago,
+      // conserva sus artículos al volver.
+      window.location.href = body.data.payment_url;
     } catch (err) {
       console.error('[CHECKOUT] Error:', err);
-
-      if (err && err.message) {
-        showError(`Error al procesar el pago: ${err.message}`);
-      } else {
-        showError(
-          'No se pudo completar el pago. Verifica los datos de tu tarjeta e intenta de nuevo.',
-        );
-      }
+      showError('No hay conexión con el servidor de pagos. Intenta de nuevo en unos minutos.');
     } finally {
       setLoading(false);
     }
@@ -264,6 +222,15 @@
   function init() {
     if (!form || !summaryBody) {
       // No estamos en la página de checkout
+      return;
+    }
+
+    // Retorno tras pago completado (checkout.html?paid=1&order=<uid>):
+    // vaciar carrito y mostrar pantalla de éxito.
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('paid') === '1') {
+      clearCart();
+      showSuccess(params.get('order') || '');
       return;
     }
 

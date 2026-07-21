@@ -20,6 +20,10 @@ const apiRoutes         = require('./routes');
 const app  = express();
 const PORT = process.env.PORT || 3000;
 
+// Detrás de Nginx: confiar en el primer proxy para X-Forwarded-*
+// (requerido por express-rate-limit para identificar la IP real)
+app.set('trust proxy', 1);
+
 // ── Middlewares globales ────────────────────────────────────────
 app.use(helmet());                         // Cabeceras de seguridad
 app.use(cors(corsOptions));                // CORS estricto

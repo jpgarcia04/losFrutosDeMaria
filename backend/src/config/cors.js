@@ -23,9 +23,10 @@ const corsOptions = {
    * solo en entorno de desarrollo.
    */
   origin(origin, callback) {
-    // Permitir peticiones sin origen (server-to-server, curl, Postman)
-    // solo en desarrollo
-    if (!origin && process.env.NODE_ENV !== 'production') {
+    // Permitir peticiones sin origen (webhooks de EcartPay, health checks,
+    // curl). CORS solo aplica a navegadores; una petición sin Origin no
+    // puede validarse y bloquearla rompería los webhooks server-to-server.
+    if (!origin) {
       return callback(null, true);
     }
 
